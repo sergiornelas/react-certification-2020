@@ -10,13 +10,12 @@ const Nav = styled.nav`
   color: white;
   height: 4rem;
   background-color: brown;
-  /* font-size: 2rem; */
   margin: auto;
 
   display: flex;
   align-items: center;
   justify-content: space-between;
-  box-shadow: 1px 1px 1px 1px darkgray;
+  box-shadow: 1px 1px 3px 0.5px darkgray;
 `;
 
 const LeftWrapper = styled.nav`
@@ -35,9 +34,7 @@ function Toolbar() {
         <Search />
       </LeftWrapper>
       <RightWrapper>
-        Dark mode
         <ToggleDark />
-        Login
         <Login />
       </RightWrapper>
     </Nav>

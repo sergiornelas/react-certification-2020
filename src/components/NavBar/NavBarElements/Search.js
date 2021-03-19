@@ -5,12 +5,16 @@ const Input = styled.input`
   font-size: 1.2rem;
   color: black;
   margin-left: 1rem;
-  width: 10rem;
+  width: 13rem;
   &:hover {
     background-color: lightgray;
   }
 
   @media (min-width: 495px) {
+    width: 20rem;
+  }
+
+  @media (min-width: 595px) {
     width: 25rem;
   }
 `;

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const LoginHandler = styled.p`
+export const LoginHandler = styled.p`
   color: white;
   margin-right: 1rem;
   cursor: pointer;

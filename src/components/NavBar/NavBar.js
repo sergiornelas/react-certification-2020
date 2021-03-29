@@ -10,25 +10,22 @@ const Nav = styled.nav`
   color: white;
   height: 4rem;
   background-color: brown;
-  margin: auto;
+  box-shadow: 1px 1px 3px 0.5px darkgray;
 
   display: flex;
   align-items: center;
   justify-content: space-between;
-  box-shadow: 1px 1px 3px 0.5px darkgray;
 `;
 
-const LeftWrapper = styled.nav`
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+export const LeftWrapper = styled.nav`
+  display: inline-flex;
 `;
 
-const RightWrapper = styled(LeftWrapper)``;
+export const RightWrapper = styled(LeftWrapper)``;
 
 function Toolbar() {
   return (
-    <Nav>
+    <Nav role="rowheader">
       <LeftWrapper>
         <SideDrawer />
         <Search />

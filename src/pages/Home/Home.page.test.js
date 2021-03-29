@@ -1,9 +1,9 @@
-// import * as React from 'react';
-// import { render } from '@testing-library/react';
+import * as React from 'react';
+import { render } from '@testing-library/react';
 
-// import HomePage from './Home.page';
+import { HomeTitle } from './Home.page';
 
 test('renders the page title', () => {
-  // const { getByText } = render(<HomePage />);
-  // getByText('Welcome to the Challenge!');
+  render(<HomeTitle />);
+  expect(document.querySelector('h1')).toBeInTheDocument();
 });

@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import mockYoutubeData from '../../../mock/youtube-videos-mock.json';
 
-const VideoCard = styled.div`
+export const VideoCard = styled.div`
   background-color: white;
   margin: 0.5rem;
   cursor: pointer;
@@ -15,12 +15,12 @@ const VideoCard = styled.div`
   }
 `;
 
-const VideoCardInfo = styled.div`
+export const VideoCardInfo = styled.div`
   padding: 20px;
   width: 310px;
 `;
 
-const youtubeCards = mockYoutubeData.items.map((elem) => {
+export const youtubeCards = mockYoutubeData.items.map((elem) => {
   //  console.log(elem.id.kind);
   return (
     <VideoCard key={elem.etag}>

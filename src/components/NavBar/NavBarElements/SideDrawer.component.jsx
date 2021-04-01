@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-// import NavigationItem from './NavigationItem/NavigationItem';
 
 const DivContainer = styled.div`
   display: flex;
@@ -22,7 +21,7 @@ const Div = styled.div`
 
 function SideDrawer() {
   return (
-    <DivContainer>
+    <DivContainer role="menuitem">
       <Div />
       <Div />
       <Div />

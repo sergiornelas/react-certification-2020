@@ -1,34 +1,31 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import SideDrawer from './NavBarElements/SideDrawer';
-import Search from './NavBarElements/Search';
-import ToggleDark from './NavBarElements/ToggleDark';
-import Login from './NavBarElements/Login';
+import SideDrawer from './NavBarElements/SideDrawer.component';
+import Search from './NavBarElements/Search.component';
+import ToggleDark from './NavBarElements/ToggleDark.component';
+import Login from './NavBarElements/Login.component';
 
 const Nav = styled.nav`
   color: white;
   height: 4rem;
   background-color: brown;
-  margin: auto;
+  box-shadow: 1px 1px 3px 0.5px darkgray;
 
   display: flex;
   align-items: center;
   justify-content: space-between;
-  box-shadow: 1px 1px 3px 0.5px darkgray;
 `;
 
-const LeftWrapper = styled.nav`
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+export const LeftWrapper = styled.nav`
+  display: inline-flex;
 `;
 
-const RightWrapper = styled(LeftWrapper)``;
+export const RightWrapper = styled(LeftWrapper)``;
 
 function Toolbar() {
   return (
-    <Nav>
+    <Nav role="rowheader">
       <LeftWrapper>
         <SideDrawer />
         <Search />

@@ -20,7 +20,7 @@ const Input = styled.input`
 `;
 
 function SearchInput() {
-  return <Input placeholder="Search video" />;
+  return <Input placeholder="Search video" role="search" />;
 }
 
 export default SearchInput;

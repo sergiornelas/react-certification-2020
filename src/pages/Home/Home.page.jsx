@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { useAuth } from '../../providers/Auth';
 import Videocards from './VideoCards/VideoCards';
 
-const HomeTitle = styled.h1`
+export const HomeTitle = styled.h1`
   text-align: center;
   font-size: 2.5rem;
   margin: 3rem;
@@ -30,7 +30,7 @@ function HomePage() {
 
   return (
     <section ref={sectionRef}>
-      <HomeTitle>Welcome to the Challenge!</HomeTitle>
+      <HomeTitle data-testid="columnheader">Welcome to the Challenge!</HomeTitle>
       <HomeBody>
         <Videocards />
         {authenticated ? (

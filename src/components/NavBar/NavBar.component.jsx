@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import SideDrawer from './NavBarElements/SideDrawer';
-import Search from './NavBarElements/Search';
-import ToggleDark from './NavBarElements/ToggleDark';
-import Login from './NavBarElements/Login';
+import SideDrawer from './NavBarElements/SideDrawer.component';
+import Search from './NavBarElements/Search.component';
+import ToggleDark from './NavBarElements/ToggleDark.component';
+import Login from './NavBarElements/Login.component';
 
 const Nav = styled.nav`
   color: white;

@@ -1,7 +1,9 @@
-import * as React from 'react';
+import React from 'react';
 import { render, screen } from '@testing-library/react';
+import 'jest-styled-components';
+import '@testing-library/jest-dom/extend-expect';
 
-import Search from './Search';
+import Search from './Search.component';
 
 test('renders the correct text', () => {
   render(<Search />);

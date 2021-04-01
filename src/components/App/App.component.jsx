@@ -11,7 +11,7 @@ import Fortune from '../Fortune';
 import Layout from '../Layout';
 import { GlobalStyles } from '../../global';
 
-import NavBar from '../NavBar/NavBar';
+import NavBar from '../NavBar/NavBar.component';
 
 function App() {
   return (

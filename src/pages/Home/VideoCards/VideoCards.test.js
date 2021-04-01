@@ -1,5 +1,7 @@
-import * as React from 'react';
+import React from 'react';
 import { render } from '@testing-library/react';
+import 'jest-styled-components';
+import '@testing-library/jest-dom/extend-expect';
 import VideoCards from './VideoCards';
 
 describe('Check videocard elements being on page', () => {

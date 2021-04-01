@@ -1,6 +1,8 @@
-import * as React from 'react';
+import React from 'react';
 import { render, screen } from '@testing-library/react';
-import Login from './Login';
+import 'jest-styled-components';
+import '@testing-library/jest-dom/extend-expect';
+import Login from './Login.component';
 
 test('renders login element', () => {
   render(<Login />);

@@ -1,7 +1,9 @@
-import * as React from 'react';
+import React from 'react';
 import { render, screen } from '@testing-library/react';
+import 'jest-styled-components';
+import '@testing-library/jest-dom/extend-expect';
 
-import NavBar, { LeftWrapper, RightWrapper } from './NavBar';
+import NavBar, { LeftWrapper, RightWrapper } from './NavBar.component';
 
 describe('Full navbar and its childs are in the page', () => {
   test('navbar is available', () => {

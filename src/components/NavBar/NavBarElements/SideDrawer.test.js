@@ -1,6 +1,8 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import SideDrawer from './SideDrawer';
+import 'jest-styled-components';
+import '@testing-library/jest-dom/extend-expect';
+import SideDrawer from './SideDrawer.component';
 
 test('Sidedrawer available', () => {
   render(<SideDrawer />);

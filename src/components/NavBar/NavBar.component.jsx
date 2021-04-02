@@ -23,12 +23,12 @@ export const LeftWrapper = styled.nav`
 
 export const RightWrapper = styled(LeftWrapper)``;
 
-function Toolbar() {
+function Toolbar({ onSearch }) {
   return (
     <Nav role="rowheader">
       <LeftWrapper>
         <SideDrawer />
-        <Search />
+        <Search onSearch={onSearch} />
       </LeftWrapper>
       <RightWrapper>
         <ToggleDark />

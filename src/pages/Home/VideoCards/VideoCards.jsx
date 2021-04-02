@@ -1,6 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import mockYoutubeData from '../../../mock/youtube-videos-mock.json';
+import { Link } from 'react-router-dom';
+
+// function selectVideo(videoIdObj, onVideoSelected) {
+//   onVideoSelected(videoIdObj.videoId);
+// }
 
 export const VideoCard = styled.div`
   background-color: white;
@@ -20,25 +24,30 @@ export const VideoCardInfo = styled.div`
   width: 310px;
 `;
 
-export const youtubeCards = mockYoutubeData.items.map((elem) => {
-  //  console.log(elem.id.kind);
-  return (
-    <VideoCard key={elem.etag}>
-      <img
-        alt={elem.snippet.title}
-        src={elem.snippet.thumbnails.medium.url}
-        style={{ borderRadius: '5px', backgroundSize: '50%' }}
-      />
-      <VideoCardInfo>
-        <h1>{elem.snippet.title}</h1>
-        {elem.snippet.description}
-      </VideoCardInfo>
-    </VideoCard>
-  );
-});
+function youtubeCards(videosData) {
+  return videosData.map(({ snippet, id }) => {
+    if (id.videoId) {
+      return (
+        <VideoCard key={id.videoId}>
+          <Link to={`/${id.videoId}`} style={{ textDecoration: 'none', color: 'black' }}>
+            <img
+              alt={snippet.title}
+              src={snippet.thumbnails.medium.url}
+              style={{ width: '100%' }}
+            />
+            <VideoCardInfo>
+              <h1>{snippet.title}</h1>
+              {snippet.description}
+            </VideoCardInfo>
+          </Link>
+        </VideoCard>
+      );
+    }
+  });
+}
 
-function VideoCards() {
-  return youtubeCards;
+function VideoCards({ data }) {
+  return <>{youtubeCards(data)}</>;
 }
 
 export default VideoCards;

@@ -17,7 +17,7 @@ const HomeBody = styled.section`
   justify-content: center;
 `;
 
-function HomePage() {
+function HomePage({ onVideoSelected, data }) {
   const history = useHistory();
   const sectionRef = useRef(null);
   const { authenticated, logout } = useAuth();
@@ -32,7 +32,7 @@ function HomePage() {
     <section ref={sectionRef}>
       <HomeTitle data-testid="columnheader">Welcome to the Challenge!</HomeTitle>
       <HomeBody>
-        <Videocards />
+        <Videocards onVideoSelected={onVideoSelected} data={data} />
         {authenticated ? (
           <>
             <h2>Good to have you back</h2>

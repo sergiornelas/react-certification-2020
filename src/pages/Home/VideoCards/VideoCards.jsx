@@ -2,9 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-// function selectVideo(videoIdObj, onVideoSelected) {
-//   onVideoSelected(videoIdObj.videoId);
-// }
+function selectVideo(videoIdObj, onVideoSelected) {
+  // local storage
+  // localStorage.setItem('videoId', videoIdObj.videoId);
+  onVideoSelected(videoIdObj.videoId);
+}
 
 export const VideoCard = styled.div`
   background-color: white;
@@ -24,30 +26,32 @@ export const VideoCardInfo = styled.div`
   width: 310px;
 `;
 
-function youtubeCards(videosData) {
+function youtubeCards(videosData, onVideoSelected) {
   return videosData.map(({ snippet, id }) => {
-    if (id.videoId) {
-      return (
-        <VideoCard key={id.videoId}>
-          <Link to={`/${id.videoId}`} style={{ textDecoration: 'none', color: 'black' }}>
-            <img
-              alt={snippet.title}
-              src={snippet.thumbnails.medium.url}
-              style={{ width: '100%' }}
-            />
-            <VideoCardInfo>
-              <h1>{snippet.title}</h1>
-              {snippet.description}
-            </VideoCardInfo>
-          </Link>
-        </VideoCard>
-      );
-    }
+    return (
+      <VideoCard key={id.videoId} onClick={() => selectVideo(id, onVideoSelected)}>
+        <Link to={`/${id.videoId}`} style={{ textDecoration: 'none', color: 'black' }}>
+          {/* <Link
+          to={localStorage.getItem('videoId')}
+          style={{ textDecoration: 'none', color: 'black' }}
+          > */}
+          <img
+            alt={snippet.title}
+            src={snippet.thumbnails.medium.url}
+            style={{ width: '100%' }}
+          />
+          <VideoCardInfo>
+            <h1>{snippet.title}</h1>
+            {snippet.description}
+          </VideoCardInfo>
+        </Link>
+      </VideoCard>
+    );
   });
 }
 
-function VideoCards({ data }) {
-  return <>{youtubeCards(data)}</>;
+function VideoCards({ data, onVideoSelected }) {
+  return <>{youtubeCards(data, onVideoSelected)}</>;
 }
 
 export default VideoCards;

@@ -21,17 +21,17 @@ const Input = styled.input`
 
 function Search({ onSearch }) {
   // INDIO
-  const [title, setTitle] = useState('');
+  const [queryWord, setQueryWord] = useState('');
 
   const onSearchChanged = (event) => {
     const inputTitle = event.target.value;
-    console.log(inputTitle); // s se ser serg
-    setTitle(inputTitle);
+    // console.log(inputTitle); // s se ser serg
+    setQueryWord(inputTitle);
   };
 
   const onSubmit = (event) => {
     event.preventDefault();
-    onSearch(title);
+    onSearch(queryWord);
   };
   //  FIN INDIO
 

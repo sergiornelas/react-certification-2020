@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+// import React, { useState } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import AuthProvider from '../../providers/Auth';
@@ -16,11 +17,8 @@ import youtubeApi from '../../api/youtube';
 import VideoDetail from '../VideoDetail/VideoDetail';
 
 function App() {
-  //  START INDIO
   const [videosMetaInfo, setVideosMetaInfo] = useState([]);
   const [selectedVideoId, setSelectedVideoId] = useState(null);
-
-  console.log(selectedVideoId);
 
   const onVideoSelected = (videoId) => {
     setSelectedVideoId(videoId);
@@ -32,13 +30,22 @@ function App() {
         q: keyword,
       },
     });
-
+    console.log('YOUTUBE API QUERY DATA CONSUMED');
+    // console.log(response.data.items);
     setVideosMetaInfo(response.data.items);
-    // setSelectedVideoId(response.data.items[0].id.videoId);
-    console.log(response); // {data: Object, status: 200...}
-    //  console.log(this.state); //{videosMetaInfo...}
+    setSelectedVideoId(response.data.items[0].id.videoId);
   };
-  //  END INDIO
+
+  // Wizeline Data home page.
+  useEffect(() => {
+    const response = youtubeApi.get('/search', {
+      params: {
+        q: 'wizeline',
+      },
+    });
+    console.log('YOUTUBE API QUERY DATA CONSUMED');
+    response.then((wizelineData) => setVideosMetaInfo(wizelineData.data.items));
+  }, []);
 
   return (
     <BrowserRouter>
@@ -56,8 +63,11 @@ function App() {
             <Private exact path="/secret">
               <SecretPage />
             </Private>
-            <Route path="/3CmJ68RU2fs">
-              <VideoDetail />
+            <Route exact path={`/${selectedVideoId}`}>
+              <VideoDetail
+                selectedVideoId={selectedVideoId}
+                videosMetaInfo={videosMetaInfo}
+              />
             </Route>
             <Route path="*">
               <NotFound />

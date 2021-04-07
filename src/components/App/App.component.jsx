@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-// import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import AuthProvider from '../../providers/Auth';
@@ -13,49 +12,34 @@ import Layout from '../Layout';
 import { GlobalStyles } from '../../global';
 
 import NavBar from '../NavBar/NavBar.component';
-import youtubeApi from '../../api/youtube';
-import VideoDetail from '../VideoDetail/VideoDetail';
+import VideoReproducer from '../VideoReproducer/VideoReproducer';
 
 function App() {
-  const [videosMetaInfo, setVideosMetaInfo] = useState([]);
-  const [selectedVideoId, setSelectedVideoId] = useState(null);
+  const [search, setSearch] = useState('wizeline');
+  const [videoSelected, setVideoSelected] = useState('');
 
-  const onVideoSelected = (videoId) => {
-    setSelectedVideoId(videoId);
+  const searchResult = (word) => {
+    setSearch(word);
   };
 
-  const onSearch = async (keyword) => {
-    const response = await youtubeApi.get('/search', {
-      params: {
-        q: keyword,
-      },
-    });
-    console.log('YOUTUBE API QUERY DATA CONSUMED');
-    // console.log(response.data.items);
-    setVideosMetaInfo(response.data.items);
-    setSelectedVideoId(response.data.items[0].id.videoId);
+  const getVideoSelected = (id) => {
+    setVideoSelected(id);
   };
 
-  // Wizeline Data home page.
-  useEffect(() => {
-    const response = youtubeApi.get('/search', {
-      params: {
-        q: 'wizeline',
-      },
-    });
-    console.log('YOUTUBE API QUERY DATA CONSUMED');
-    response.then((wizelineData) => setVideosMetaInfo(wizelineData.data.items));
-  }, []);
+  console.log(' VIDEO SELECTED (APP):', videoSelected);
 
   return (
     <BrowserRouter>
       <AuthProvider>
         <GlobalStyles />
-        <NavBar onSearch={onSearch} />
+        <NavBar searchResult={searchResult} />
         <Layout>
           <Switch>
             <Route exact path="/">
-              <HomePage onVideoSelected={onVideoSelected} data={videosMetaInfo} />
+              <HomePage search={search} getVideoSelected={getVideoSelected} />
+            </Route>
+            <Route path={`/:${localStorage.getItem('videoId')}`}>
+              <VideoReproducer />
             </Route>
             <Route exact path="/login">
               <LoginPage />
@@ -63,12 +47,6 @@ function App() {
             <Private exact path="/secret">
               <SecretPage />
             </Private>
-            <Route exact path={`/${selectedVideoId}`}>
-              <VideoDetail
-                selectedVideoId={selectedVideoId}
-                videosMetaInfo={videosMetaInfo}
-              />
-            </Route>
             <Route path="*">
               <NotFound />
             </Route>

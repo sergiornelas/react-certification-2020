@@ -19,21 +19,19 @@ const Input = styled.input`
   }
 `;
 
-function Search({ onSearch }) {
-  // INDIO
+function Search({ searchResult }) {
   const [queryWord, setQueryWord] = useState('');
+
+  const onSubmit = (event) => {
+    event.preventDefault();
+    searchResult(queryWord);
+  };
 
   const onSearchChanged = (event) => {
     const inputTitle = event.target.value;
     // console.log(inputTitle); // s se ser serg
     setQueryWord(inputTitle);
   };
-
-  const onSubmit = (event) => {
-    event.preventDefault();
-    onSearch(queryWord);
-  };
-  //  FIN INDIO
 
   return (
     <form onSubmit={onSubmit}>

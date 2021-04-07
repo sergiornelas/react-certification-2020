@@ -1,8 +1,9 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import { useAuth } from '../../providers/Auth';
 import Videocards from './VideoCards/VideoCards';
+import youtubeApi from '../../api/youtube';
 
 export const HomeTitle = styled.h1`
   text-align: center;
@@ -17,7 +18,8 @@ const HomeBody = styled.section`
   justify-content: center;
 `;
 
-function HomePage({ onVideoSelected, data }) {
+function HomePage({ search, getVideoSelected }) {
+  // not my code xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
   const history = useHistory();
   const sectionRef = useRef(null);
   const { authenticated, logout } = useAuth();
@@ -27,12 +29,27 @@ function HomePage({ onVideoSelected, data }) {
     logout();
     history.push('/');
   }
+  // not my code xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+  const [videosMetaInfo, setVideosMetaInfo] = useState([]);
+
+  useEffect(() => {
+    const response = youtubeApi.get('/search', {
+      params: {
+        q: search,
+      },
+    });
+    console.log('YOUTUBE API QUERY DATA CONSUMED (HOME)');
+    response.then((youtubeData) => setVideosMetaInfo(youtubeData.data.items));
+  }, [setVideosMetaInfo, search]);
 
   return (
     <section ref={sectionRef}>
       <HomeTitle data-testid="columnheader">Welcome to the Challenge!</HomeTitle>
       <HomeBody>
-        <Videocards onVideoSelected={onVideoSelected} data={data} />
+        <Videocards videosMetaInfo={videosMetaInfo} getVideoSelected={getVideoSelected} />
+
+        {/* not my code xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx */}
         {authenticated ? (
           <>
             <h2>Good to have you back</h2>
@@ -47,6 +64,7 @@ function HomePage({ onVideoSelected, data }) {
         ) : (
           <Link to="/login">let me in →</Link>
         )}
+        {/* not my code xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx */}
       </HomeBody>
     </section>
   );

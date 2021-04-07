@@ -1,7 +1,8 @@
 import axios from 'axios';
 
 // const KEY = 'AIzaSyDMFcPK8HSf8kOFrkPnAJH83DTJBYJGC74'; //  vieja
-const KEY = 'AIzaSyCb-N5KqXz6aIZ-A6v5AAv5H6YMZsY6P18'; //  nueva
+// const KEY = 'AIzaSyCb-N5KqXz6aIZ-A6v5AAv5H6YMZsY6P18'; //  nueva
+const KEY = 'AIzaSyCQEOOburB6mldMChkU2Z9_VLTTrmD6pgc'; //  nueva2
 // const KEY = `${process.env.REACT_APP_NOT_SECRET_CODE}`;
 
 export default axios.create({

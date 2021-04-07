@@ -3,9 +3,9 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 function selectVideo(videoIdObj, onVideoSelected) {
-  // local storage
-  // localStorage.setItem('videoId', videoIdObj.videoId);
+  localStorage.setItem('videoId', videoIdObj.videoId);
   onVideoSelected(videoIdObj.videoId);
+  console.log('SELECT VIDEO (VIDEOCARDS):', videoIdObj.videoId);
 }
 
 export const VideoCard = styled.div`
@@ -26,15 +26,11 @@ export const VideoCardInfo = styled.div`
   width: 310px;
 `;
 
-function youtubeCards(videosData, onVideoSelected) {
-  return videosData.map(({ snippet, id }) => {
+function youtubeCards(videosMetaInfo, getVideoSelected) {
+  return videosMetaInfo.map(({ snippet, id }) => {
     return (
-      <VideoCard key={id.videoId} onClick={() => selectVideo(id, onVideoSelected)}>
+      <VideoCard key={id.videoId} onClick={() => selectVideo(id, getVideoSelected)}>
         <Link to={`/${id.videoId}`} style={{ textDecoration: 'none', color: 'black' }}>
-          {/* <Link
-          to={localStorage.getItem('videoId')}
-          style={{ textDecoration: 'none', color: 'black' }}
-          > */}
           <img
             alt={snippet.title}
             src={snippet.thumbnails.medium.url}
@@ -50,8 +46,8 @@ function youtubeCards(videosData, onVideoSelected) {
   });
 }
 
-function VideoCards({ data, onVideoSelected }) {
-  return <>{youtubeCards(data, onVideoSelected)}</>;
+function VideoCards({ videosMetaInfo, getVideoSelected }) {
+  return <>{youtubeCards(videosMetaInfo, getVideoSelected)}</>;
 }
 
 export default VideoCards;

@@ -12,7 +12,7 @@ import Layout from '../Layout';
 import { GlobalStyles } from '../../global';
 
 import NavBar from '../NavBar/NavBar.component';
-import VideoReproducer from '../VideoReproducer/VideoReproducer';
+import VideoReproducer from '../VideoReproducerPage/VideoReproducer.page';
 
 function App() {
   const [search, setSearch] = useState('wizeline');

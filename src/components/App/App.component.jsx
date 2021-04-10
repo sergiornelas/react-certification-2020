@@ -26,8 +26,6 @@ function App() {
     setVideoSelected(id);
   };
 
-  console.log(' VIDEO SELECTED (APP):', videoSelected);
-
   return (
     <BrowserRouter>
       <AuthProvider>
@@ -39,7 +37,7 @@ function App() {
               <HomePage search={search} getVideoSelected={getVideoSelected} />
             </Route>
             <Route path={`/:${localStorage.getItem('videoId')}`}>
-              <VideoReproducer />
+              <VideoReproducer search={search} videoSelected={videoSelected} />
             </Route>
             <Route exact path="/login">
               <LoginPage />

@@ -18,7 +18,8 @@ function useFortune() {
 
         setFortune(currentFortune.message);
       } catch (error) {
-        console.error('Bad fortune: ', error);
+        // console.error('Bad fortune: ', error);
+        console.log('');
       }
     }
 

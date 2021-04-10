@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { useHistory } from 'react-router-dom';
 
 const Input = styled.input`
   font-size: 1.2rem;
@@ -22,14 +23,16 @@ const Input = styled.input`
 function Search({ searchResult }) {
   const [queryWord, setQueryWord] = useState('');
 
+  const history = useHistory();
+
   const onSubmit = (event) => {
     event.preventDefault();
     searchResult(queryWord);
+    history.push('/');
   };
 
   const onSearchChanged = (event) => {
     const inputTitle = event.target.value;
-    // console.log(inputTitle); // s se ser serg
     setQueryWord(inputTitle);
   };
 

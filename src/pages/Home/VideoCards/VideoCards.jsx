@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 function selectVideo(videoIdObj, onVideoSelected) {
   localStorage.setItem('videoId', videoIdObj.videoId);
   onVideoSelected(videoIdObj.videoId);
-  console.log('SELECT VIDEO (VIDEOCARDS):', videoIdObj.videoId);
 }
 
 export const VideoCard = styled.div`

@@ -1,6 +1,7 @@
-import React from 'react';
-import { useParams } from 'react-router';
+import React, { useState } from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import useYoutube from '../../utils/hooks/useYoutube';
 
 export const Container = styled.section`
   display: flex;
@@ -48,47 +49,47 @@ export const Thumbnail = styled.img`
   }
 `;
 
-function VideoReproducer() {
-  const x = useParams();
-  console.log('x:', Object.keys(x)[0]);
-  const xx = Object.keys(x)[0];
+function VideoReproducer({ search }) {
+  // const [currentLink, setCurrentLink] = useState(Object.keys(useParams())[0]);
+  const [...data] = useYoutube(search);
+  const [videoUrl, setVideoUrl] = useState(localStorage.getItem('videoId'));
 
-  // console.log('VIDEOSELECTED (VR)', videoSelected);
-  // useEffect(() => {
-  //   const response = youtubeApi.get('/search', {
-  //     params: {
-  //       q: xx,
-  //     },
-  //   });
-  //   console.log('YOUTUBE API QUERY DATA CONSUMED (VIDEO REPRODUCER)');
-  //   response.then((youtubeData) => console.log(youtubeData.data.items[0].id.videoId));
-  // }, [xx]);
+  function updateVideoPlayer(id) {
+    localStorage.setItem('videoId', id);
+    setVideoUrl(localStorage.getItem('videoId'));
+  }
 
-  // const VideoListElements = () => {
-  //   return videosMetaInfo.map((elem) => {
-  //     return (
-  //       <VideoListElement key={elem.id.videoId}>
-  //         <Link
-  //           to={`/${elem.id.videoId}`}
-  //           style={{ textDecoration: 'none', color: 'black', display: 'flex' }}
-  //         >
-  //           <Thumbnail
-  //             src={elem.snippet.thumbnails.medium.url}
-  //             alt={elem.snippet.title}
-  //           />
-  //           <p>{elem.snippet.title}</p>
-  //         </Link>
-  //       </VideoListElement>
-  //     );
-  //   });
-  // };
+  const VideoListElements = () => {
+    return data.map((elem) => {
+      return (
+        <VideoListElement
+          key={elem.id.videoId}
+          onClick={() => updateVideoPlayer(elem.id.videoId)}
+        >
+          <Link
+            to={`/${elem.id.videoId}`}
+            style={{ textDecoration: 'none', color: 'black', display: 'flex' }}
+          >
+            <Thumbnail
+              src={elem.snippet.thumbnails.medium.url}
+              alt={elem.snippet.title}
+            />
+            <p>{elem.snippet.title}</p>
+          </Link>
+        </VideoListElement>
+      );
+    });
+  };
 
   return (
     <Container>
-      <VideoPlayer title={xx} src={`https://www.youtube.com/embed/${xx}`} />
-      {/* <VideoList>
+      <VideoPlayer
+        title={localStorage.getItem('videoId')}
+        src={`https://www.youtube.com/embed/${videoUrl}`}
+      />
+      <VideoList>
         <VideoListElements />
-      </VideoList> */}
+      </VideoList>
     </Container>
   );
 }

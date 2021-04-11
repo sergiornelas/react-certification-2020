@@ -1,16 +1,16 @@
 import styled from 'styled-components';
 
 const VideoPlayer = styled.iframe`
-  width: 99%;
+  width: 98%;
   height: 216px;
   @media (min-width: 510px) {
-    height: 316px;
+    height: 310px;
   }
   @media (min-width: 815px) {
-    height: 416px;
+    height: 400px;
   }
   @media (min-width: 1340px) {
-    height: 460px;
+    height: 454px;
   }
 `;
 

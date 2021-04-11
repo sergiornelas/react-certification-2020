@@ -13,7 +13,7 @@
     "styled-components": "^5.2.1"
   },
   "scripts": {
-    "test": "jest --coverageDirectory=./ >coverage.txt",
+    "test": "jest --coverage",
     "coverage": "react-scripts test --env=jsdom --watchAll=false --coverage",
     "start": "react-scripts start",
     "build": "react-scripts build",

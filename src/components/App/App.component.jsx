@@ -26,6 +26,8 @@ function App() {
     setVideoSelected(id);
   };
 
+  // "test": "jest --coverageDirectory=./ >coverage.txt",
+
   return (
     <BrowserRouter>
       <AuthProvider>

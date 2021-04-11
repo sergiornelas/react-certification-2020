@@ -29,7 +29,7 @@ function VideoReproducer({ search }) {
     <Container>
       <VideoPlayer title={videoUrl} src={`https://www.youtube.com/embed/${videoUrl}`} />
       <VideoList>
-        <VideoListElements data={data} updateVideoPlayer={updateVideoPlayer} />;
+        <VideoListElements data={data} updateVideoPlayer={updateVideoPlayer} />
       </VideoList>
     </Container>
   );

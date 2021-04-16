@@ -25,7 +25,7 @@ export const VideoCardInfo = styled.div`
   width: 310px;
 `;
 
-function youtubeCards(videosMetaInfo, getVideoSelected) {
+function VideoCards({ videosMetaInfo, getVideoSelected }) {
   return videosMetaInfo.map(({ snippet, id }) => {
     return (
       <VideoCard key={id.videoId} onClick={() => selectVideo(id, getVideoSelected)}>
@@ -43,10 +43,6 @@ function youtubeCards(videosMetaInfo, getVideoSelected) {
       </VideoCard>
     );
   });
-}
-
-function VideoCards({ videosMetaInfo, getVideoSelected }) {
-  return <>{youtubeCards(videosMetaInfo, getVideoSelected)}</>;
 }
 
 export default VideoCards;

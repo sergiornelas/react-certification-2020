@@ -32,6 +32,7 @@ function HomePage({ search, getVideoSelected }) {
   // not my code xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
   const [...data] = useYoutube(search);
+  // console.log('data', data);
 
   return (
     <section ref={sectionRef}>

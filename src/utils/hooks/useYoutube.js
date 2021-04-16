@@ -18,7 +18,7 @@ const youtubeApi = axios.create({
   headers: {},
 });
 
-const useYoutube = (search) => {
+export default function useYoutube(search) {
   const [videosMetaInfo, setVideosMetaInfo] = useState([]);
 
   useEffect(() => {
@@ -33,6 +33,6 @@ const useYoutube = (search) => {
   }, [setVideosMetaInfo, search]);
 
   return videosMetaInfo;
-};
+}
 
-export default useYoutube;
+// export default useYoutube;

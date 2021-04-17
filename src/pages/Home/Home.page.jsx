@@ -1,8 +1,9 @@
 import React, { useRef } from 'react';
-import { Link, useHistory } from 'react-router-dom';
 import styled from 'styled-components';
-import { useAuth } from '../../providers/Auth';
 import Videocards from './VideoCards/VideoCards';
+import useYoutube from '../../utils/hooks/useYoutube';
+// import { Link, useHistory } from 'react-router-dom';
+// import { useAuth } from '../../providers/Auth';
 
 export const HomeTitle = styled.h1`
   text-align: center;
@@ -17,23 +18,30 @@ const HomeBody = styled.section`
   justify-content: center;
 `;
 
-function HomePage() {
-  const history = useHistory();
+function HomePage({ search, getVideoSelected }) {
+  // not my code xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+  // const history = useHistory();
   const sectionRef = useRef(null);
-  const { authenticated, logout } = useAuth();
+  // const { authenticated, logout } = useAuth();
 
-  function deAuthenticate(event) {
-    event.preventDefault();
-    logout();
-    history.push('/');
-  }
+  // function deAuthenticate(event) {
+  //   event.preventDefault();
+  //   logout();
+  //   history.push('/');
+  // }
+  // not my code xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+  const [...data] = useYoutube(search);
+  // console.log('data', data);
 
   return (
     <section ref={sectionRef}>
       <HomeTitle data-testid="columnheader">Welcome to the Challenge!</HomeTitle>
       <HomeBody>
-        <Videocards />
-        {authenticated ? (
+        <Videocards videosMetaInfo={data} getVideoSelected={getVideoSelected} />
+
+        {/* not my code xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx */}
+        {/* {authenticated ? (
           <>
             <h2>Good to have you back</h2>
             <span>
@@ -46,7 +54,8 @@ function HomePage() {
           </>
         ) : (
           <Link to="/login">let me in →</Link>
-        )}
+        )} */}
+        {/* not my code xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx */}
       </HomeBody>
     </section>
   );

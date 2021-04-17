@@ -1,7 +1,8 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
-const KEY = `${process.env.REACT_APP_NOT_SECRET_CODE}`;
+const KEY = 'AIzaSyDHWyxODQmGDD0Y8walA1RcEVgUYCnBqH0';
+// const KEY = `${process.env.REACT_APP_NOT_SECRET_CODE}`;
 
 const youtubeApi = axios.create({
   baseURL: 'https://www.googleapis.com/youtube/v3',

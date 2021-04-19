@@ -3,7 +3,14 @@ import React, { useState, useEffect, useContext, useCallback } from 'react';
 import { AUTH_STORAGE_KEY } from '../../utils/constants';
 import { storage } from '../../utils/storage';
 
-const AuthContext = React.createContext(null);
+// const AuthContext = React.createContext({
+//   // login: () => {},
+//   // logout: () => {},
+//   // authenticated: false,
+// });
+const AuthContext = React.createContext({
+  // z: 'SergioCreateContext',
+});
 
 function useAuth() {
   const context = useContext(AuthContext);
@@ -33,8 +40,10 @@ function AuthProvider({ children }) {
     storage.set(AUTH_STORAGE_KEY, false);
   }, []);
 
+  const x = 'Sergio_Auth_provider';
+
   return (
-    <AuthContext.Provider value={{ login, logout, authenticated }}>
+    <AuthContext.Provider value={{ x, login, logout, authenticated }}>
       {children}
     </AuthContext.Provider>
   );

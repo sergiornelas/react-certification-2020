@@ -1,13 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { useAppState } from '../../../providers/AppState/State.provider';
+// import { useAppState } from '../../../providers/AppState/State.provider';
 // import useYoutube from '../../../utils/hooks/useYoutube';
-
-function selectVideo(id, setVideoSelected) {
-  localStorage.setItem('videoId', id.videoId);
-  setVideoSelected(id.videoId);
-}
 
 export const VideoCard = styled.div`
   background-color: white;
@@ -30,12 +25,15 @@ export const VideoCardInfo = styled.div`
 function VideoCards({ videosMetaInfo }) {
   // const { search } = useAppState();
   // const [...data] = useYoutube(search);
-  // const { videoSelected } = useAppState();
-  const { setVideoSelected } = useAppState();
+
+  // const { state, dispatch } = useAppState();
 
   return videosMetaInfo.map(({ snippet, id }) => {
     return (
-      <VideoCard key={id.videoId} onClick={() => selectVideo(id, setVideoSelected)}>
+      <VideoCard
+        key={id.videoId}
+        onClick={() => localStorage.setItem('videoId', id.videoId)}
+      >
         <Link to={`/${id.videoId}`} style={{ textDecoration: 'none', color: 'black' }}>
           <img
             alt={snippet.title}

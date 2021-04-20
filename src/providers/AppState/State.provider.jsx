@@ -1,5 +1,4 @@
-// import React, { useState, useEffect, useContext } from 'react';
-// import React, { useState, createContext } from 'react';
+// import React, { createContext, useContext, useReducer } from 'react';  // useReducer
 import React, { createContext, useContext, useState } from 'react';
 
 const StateContext = createContext({});
@@ -12,23 +11,33 @@ function useAppState() {
   return context;
 }
 
+// const initialState = { // useReducer
+//   search: 'wizeline',
+// }
+
+// function reducer(state, action) {  // useReducer
+//   switch (action.type) {
+//     case 'SET_SEARCH':
+//       return {
+//         ...state,
+//         search: action.payload,
+//       };
+//     default:
+//       throw new Error('Unknown action');
+//   }
+// }
+
 function StateProvider({ children }) {
   const [search, setSearch] = useState('wizeline');
-  const [videoSelected, setVideoSelected] = useState('');
-  // const searchResult = (word) => {
-  //   setSearch(word);
-  // };
-  // const getVideoSelected = (id) => {
-  //   setVideoSelected(id);
-  // };
+  // const [state, dispatch] = useReducer(reducer, initialState); // useReducer
 
   return (
     <StateContext.Provider
       value={{
         search,
         setSearch,
-        videoSelected,
-        setVideoSelected,
+        // state, // useReducer
+        // dispatch,  // useReducer
       }}
     >
       {children}

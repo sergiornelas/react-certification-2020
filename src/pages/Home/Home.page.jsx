@@ -19,7 +19,6 @@ const HomeBody = styled.section`
   justify-content: center;
 `;
 
-// function HomePage({ search, getVideoSelected }) {
 function HomePage() {
   // not my code xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
   // const history = useHistory();
@@ -33,7 +32,11 @@ function HomePage() {
   // }
   // not my code xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
-  const { search } = useAppState();
+  const { search } = useAppState(); // pure useContext
+
+  // const { state } = useAppState(); // useReducer
+  // const { search } = state;  // useReducer
+
   const [...videosMetaInfo] = useYoutube(search);
 
   return (

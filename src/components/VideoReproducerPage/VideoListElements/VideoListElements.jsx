@@ -5,8 +5,7 @@ import Thumbnail from './Thumbnail';
 import { useAppState } from '../../../providers/AppState/State.provider';
 import useYoutube from '../../../utils/hooks/useYoutube';
 
-// const VideoListElements = ({ data, updateVideoPlayer }) => {
-const VideoListElements = ({ updateVideoPlayer }) => {
+const VideoListElements = ({ setVideoUrl }) => {
   const { search } = useAppState();
   const [...data] = useYoutube(search);
 
@@ -14,7 +13,7 @@ const VideoListElements = ({ updateVideoPlayer }) => {
     return (
       <VideoListElement
         key={elem.id.videoId}
-        onClick={() => updateVideoPlayer(elem.id.videoId)}
+        onClick={() => setVideoUrl(elem.id.videoId)}
       >
         <Link
           to={`/${elem.id.videoId}`}

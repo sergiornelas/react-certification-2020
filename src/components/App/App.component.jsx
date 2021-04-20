@@ -15,22 +15,8 @@ import { GlobalStyles } from '../../global';
 
 import NavBar from '../NavBar/NavBar.component';
 import VideoReproducer from '../VideoReproducerPage/VideoReproducer.page';
-// import useAuth from '../../providers/Auth/';
 
 function App() {
-  // const [search, setSearch] = useState('wizeline');
-  // const [videoSelected, setVideoSelected] = useState('');
-
-  // const searchResult = (word) => {
-  //   setSearch(word);
-  // };
-
-  // const getVideoSelected = (id) => {
-  //   setVideoSelected(id);
-  // };
-
-  // "test": "jest --coverageDirectory=./ >coverage.txt",
-
   return (
     <BrowserRouter>
       <AuthProvider>
@@ -40,11 +26,9 @@ function App() {
           <Layout>
             <Switch>
               <Route exact path="/">
-                {/* <HomePage search={search} getVideoSelected={getVideoSelected} /> */}
                 <HomePage />
               </Route>
               <Route path={`/:${localStorage.getItem('videoId')}`}>
-                {/* <VideoReproducer search={search} videoSelected={videoSelected} /> */}
                 <VideoReproducer />
               </Route>
               <Route exact path="/login">

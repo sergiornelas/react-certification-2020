@@ -2,8 +2,14 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import VideoListElement from './VideoListElement';
 import Thumbnail from './Thumbnail';
+import { useAppState } from '../../../providers/AppState/State.provider';
+import useYoutube from '../../../utils/hooks/useYoutube';
 
-const VideoListElements = ({ data, updateVideoPlayer }) => {
+// const VideoListElements = ({ data, updateVideoPlayer }) => {
+const VideoListElements = ({ updateVideoPlayer }) => {
+  const { search } = useAppState();
+  const [...data] = useYoutube(search);
+
   return data.map((elem) => {
     return (
       <VideoListElement

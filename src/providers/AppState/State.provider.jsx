@@ -1,10 +1,8 @@
 // import React, { useState, useEffect, useContext } from 'react';
 // import React, { useState, createContext } from 'react';
-import React, { createContext, useContext } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 
-const StateContext = createContext({
-  // x: 'Sergio',
-});
+const StateContext = createContext({});
 
 function useAppState() {
   const context = useContext(StateContext);
@@ -15,9 +13,27 @@ function useAppState() {
 }
 
 function StateProvider({ children }) {
-  const y = 'sergio';
+  const [search, setSearch] = useState('wizeline');
+  const [videoSelected, setVideoSelected] = useState('');
+  // const searchResult = (word) => {
+  //   setSearch(word);
+  // };
+  // const getVideoSelected = (id) => {
+  //   setVideoSelected(id);
+  // };
 
-  return <StateContext.Provider value={{ y }}> {children} </StateContext.Provider>;
+  return (
+    <StateContext.Provider
+      value={{
+        search,
+        setSearch,
+        videoSelected,
+        setVideoSelected,
+      }}
+    >
+      {children}
+    </StateContext.Provider>
+  );
 }
 
 export { useAppState };

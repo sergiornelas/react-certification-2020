@@ -1,14 +1,10 @@
-// import React, { useRef, useContext } from 'react';
 import React, { useRef } from 'react';
 import styled from 'styled-components';
 import Videocards from './VideoCards/VideoCards';
-import useYoutube from '../../utils/hooks/useYoutube';
 // import { Link, useHistory } from 'react-router-dom';
 // import { useAuth } from '../../providers/Auth';
-
+import useYoutube from '../../utils/hooks/useYoutube';
 import { useAppState } from '../../providers/AppState/State.provider';
-// import AuthProvider from '../../providers/Auth';
-// import StateContext from '../../providers/AppState';
 
 export const HomeTitle = styled.h1`
   text-align: center;
@@ -23,7 +19,8 @@ const HomeBody = styled.section`
   justify-content: center;
 `;
 
-function HomePage({ search, getVideoSelected }) {
+// function HomePage({ search, getVideoSelected }) {
+function HomePage() {
   // not my code xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
   // const history = useHistory();
   const sectionRef = useRef(null);
@@ -36,17 +33,14 @@ function HomePage({ search, getVideoSelected }) {
   // }
   // not my code xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
-  const { y } = useAppState();
-
-  const [...data] = useYoutube(search);
+  const { search } = useAppState();
+  const [...videosMetaInfo] = useYoutube(search);
 
   return (
     <section ref={sectionRef}>
-      {/* <HomeTitle data-testid="columnheader">Welcome to the Challenge!</HomeTitle> */}
-      <HomeTitle data-testid="columnheader">{y}</HomeTitle>
+      <HomeTitle data-testid="columnheader">Welcome to the Challenge!</HomeTitle>
       <HomeBody>
-        <Videocards videosMetaInfo={data} getVideoSelected={getVideoSelected} />
-
+        <Videocards videosMetaInfo={videosMetaInfo} />
         {/* not my code xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx */}
         {/* {authenticated ? (
           <>

@@ -3,16 +3,9 @@ import { render, screen } from '@testing-library/react';
 import 'jest-styled-components';
 import '@testing-library/jest-dom/extend-expect';
 
-import NavBar, { LeftWrapper, RightWrapper } from './NavBar.component';
+import { LeftWrapper, RightWrapper } from './NavBar.component';
 
 describe('Full navbar and its childs are in the page', () => {
-  test('navbar is available', () => {
-    render(<NavBar />);
-    const navbar = screen.getByRole('rowheader');
-    expect(navbar).toBeInTheDocument();
-    expect(navbar).toHaveStyle({ backgroundColor: 'brown' });
-  });
-
   test('leftwrapper is available', () => {
     render(<LeftWrapper />);
     const leftSide = screen.getByRole('navigation');

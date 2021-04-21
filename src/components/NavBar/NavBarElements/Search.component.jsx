@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useHistory } from 'react-router-dom';
+import { useAppState } from '../../../providers/AppState/State.provider';
 
 const Input = styled.input`
   font-size: 1.2rem;
@@ -21,20 +22,20 @@ const Input = styled.input`
   }
 `;
 
-function Search({ searchResult }) {
+function Search() {
   const [queryWord, setQueryWord] = useState('');
-
+  const { dispatch } = useAppState();
   const history = useHistory();
 
   const onSubmit = (event) => {
     event.preventDefault();
-    searchResult(queryWord);
+    dispatch({ type: 'SET_SEARCH', payload: queryWord });
     history.push('/');
   };
 
   const onSearchChanged = (event) => {
-    const inputTitle = event.target.value;
-    setQueryWord(inputTitle);
+    const inputText = event.target.value;
+    setQueryWord(inputText);
   };
 
   return (

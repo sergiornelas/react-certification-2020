@@ -2,11 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-function selectVideo(videoIdObj, onVideoSelected) {
-  localStorage.setItem('videoId', videoIdObj.videoId);
-  onVideoSelected(videoIdObj.videoId);
-}
-
 export const VideoCard = styled.div`
   background-color: white;
   margin: 0.5rem;
@@ -25,10 +20,13 @@ export const VideoCardInfo = styled.div`
   width: 310px;
 `;
 
-function VideoCards({ videosMetaInfo, getVideoSelected }) {
+function VideoCards({ videosMetaInfo }) {
   return videosMetaInfo.map(({ snippet, id }) => {
     return (
-      <VideoCard key={id.videoId} onClick={() => selectVideo(id, getVideoSelected)}>
+      <VideoCard
+        key={id.videoId}
+        onClick={() => localStorage.setItem('videoId', id.videoId)}
+      >
         <Link to={`/${id.videoId}`} style={{ textDecoration: 'none', color: 'black' }}>
           <img
             alt={snippet.title}

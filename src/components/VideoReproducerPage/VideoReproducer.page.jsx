@@ -3,8 +3,6 @@ import styled from 'styled-components';
 import VideoPlayer from './VideoPlayer';
 import VideoList from './VideoList';
 import VideoListElements from './VideoListElements/VideoListElements';
-// import useYoutube from '../../utils/hooks/useYoutube';
-// import { useAppState } from '../../providers/AppState/State.provider';
 
 export const Container = styled.section`
   display: flex;
@@ -19,8 +17,6 @@ export const Container = styled.section`
 function VideoReproducer() {
   // const [currentLink, setCurrentLink] = useState(Object.keys(useParams())[0]);
   const [videoUrl, setVideoUrl] = useState(localStorage.getItem('videoId'));
-  // const { search } = useAppState();
-  // const [...data] = useYoutube(search);
 
   return (
     <Container>

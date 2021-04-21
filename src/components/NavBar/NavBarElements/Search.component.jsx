@@ -1,4 +1,3 @@
-// import React, { useState } from 'react';
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useHistory } from 'react-router-dom';
@@ -25,18 +24,18 @@ const Input = styled.input`
 
 function Search() {
   const [queryWord, setQueryWord] = useState('');
-  const { setSearch } = useAppState();
+  const { dispatch } = useAppState();
   const history = useHistory();
 
   const onSubmit = (event) => {
     event.preventDefault();
-    setSearch(queryWord);
+    dispatch({ type: 'SET_SEARCH', payload: queryWord });
     history.push('/');
   };
 
   const onSearchChanged = (event) => {
-    const inputTitle = event.target.value;
-    setQueryWord(inputTitle);
+    const inputText = event.target.value;
+    setQueryWord(inputText);
   };
 
   return (

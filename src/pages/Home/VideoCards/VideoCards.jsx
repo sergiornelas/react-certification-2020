@@ -1,8 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-// import { useAppState } from '../../../providers/AppState/State.provider';
-// import useYoutube from '../../../utils/hooks/useYoutube';
 
 export const VideoCard = styled.div`
   background-color: white;
@@ -23,11 +21,6 @@ export const VideoCardInfo = styled.div`
 `;
 
 function VideoCards({ videosMetaInfo }) {
-  // const { search } = useAppState();
-  // const [...data] = useYoutube(search);
-
-  // const { state, dispatch } = useAppState();
-
   return videosMetaInfo.map(({ snippet, id }) => {
     return (
       <VideoCard

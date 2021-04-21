@@ -6,7 +6,8 @@ import { useAppState } from '../../../providers/AppState/State.provider';
 import useYoutube from '../../../utils/hooks/useYoutube';
 
 const VideoListElements = ({ setVideoUrl }) => {
-  const { search } = useAppState();
+  const { state } = useAppState();
+  const { search } = state;
   const [...data] = useYoutube(search);
 
   return data.map((elem) => {

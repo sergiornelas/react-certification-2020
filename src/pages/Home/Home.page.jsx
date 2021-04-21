@@ -1,8 +1,6 @@
 import React, { useRef } from 'react';
 import styled from 'styled-components';
 import Videocards from './VideoCards/VideoCards';
-// import { Link, useHistory } from 'react-router-dom';
-// import { useAuth } from '../../providers/Auth';
 import useYoutube from '../../utils/hooks/useYoutube';
 import { useAppState } from '../../providers/AppState/State.provider';
 
@@ -32,10 +30,8 @@ function HomePage() {
   // }
   // not my code xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
-  const { search } = useAppState(); // pure useContext
-
-  // const { state } = useAppState(); // useReducer
-  // const { search } = state;  // useReducer
+  const { state } = useAppState();
+  const { search } = state;
 
   const [...videosMetaInfo] = useYoutube(search);
 

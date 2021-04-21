@@ -27,6 +27,7 @@ export default function useYoutube(search) {
       },
     });
     response.then((youtubeData) => {
+      console.log('API consumed');
       setVideosMetaInfo(youtubeData.data.items);
     });
     response.catch((e) => console.log('error youtube api: ', e));

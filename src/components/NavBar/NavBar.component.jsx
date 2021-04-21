@@ -5,16 +5,21 @@ import SideDrawer from './NavBarElements/SideDrawer.component';
 import Search from './NavBarElements/Search.component';
 import ToggleDark from './NavBarElements/ToggleDark.component';
 import Login from './NavBarElements/Login.component';
+import { useAppState } from '../../providers/AppState/State.provider';
 
-const Nav = styled.nav`
+const NavLight = styled.nav`
   color: white;
-  height: 4rem;
   background-color: brown;
-  box-shadow: 1px 1px 3px 0.5px darkgray;
 
+  height: 4rem;
+  box-shadow: 1px 1px 3px 0.5px darkgray;
   display: flex;
   align-items: center;
   justify-content: space-between;
+`;
+
+const NavDark = styled(NavLight)`
+  background-color: black;
 `;
 
 export const LeftWrapper = styled.nav`
@@ -24,17 +29,27 @@ export const LeftWrapper = styled.nav`
 export const RightWrapper = styled(LeftWrapper)``;
 
 function Toolbar() {
+  const { state, dispatch } = useAppState();
+  const { darkTheme } = state;
+
+  const NavBar = ({ children }) => {
+    if (darkTheme) {
+      return <NavDark role="rowheader">{children}</NavDark>;
+    }
+    return <NavLight role="rowheader">{children}</NavLight>;
+  };
+
   return (
-    <Nav role="rowheader">
+    <NavBar>
       <LeftWrapper>
         <SideDrawer />
         <Search />
       </LeftWrapper>
       <RightWrapper>
-        <ToggleDark />
+        <ToggleDark darkTheme={darkTheme} dispatch={dispatch} />
         <Login />
       </RightWrapper>
-    </Nav>
+    </NavBar>
   );
 }
 

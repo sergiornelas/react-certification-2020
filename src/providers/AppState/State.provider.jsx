@@ -12,6 +12,7 @@ function useAppState() {
 
 const initialState = {
   search: 'wizeline',
+  darkTheme: false,
 };
 
 function reducer(state, action) {
@@ -20,6 +21,11 @@ function reducer(state, action) {
       return {
         ...state,
         search: action.payload,
+      };
+    case 'SET_THEME':
+      return {
+        ...state,
+        darkTheme: action.payload,
       };
     default:
       throw new Error('Unknown action');

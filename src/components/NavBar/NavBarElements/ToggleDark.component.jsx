@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
+// import { useAppState } from '../../../providers/AppState/State.provider';
 
-// Toggle switch
-const Dark = styled.input`
+export const Dark = styled.input`
   color: grey;
   margin: auto;
   width: 60px;
@@ -21,11 +21,15 @@ const Text = styled.p`
   }
 `;
 
-function ToggleDark() {
+function ToggleDark({ darkTheme, dispatch }) {
+  const switchTheme = () => {
+    dispatch({ type: 'SET_THEME', payload: !darkTheme });
+  };
+
   return (
     <>
       <Text>Dark Mode</Text>
-      <Dark type="radio" id="dark" name="dark" value="dark" />
+      <Dark type="radio" onClick={switchTheme} />
     </>
   );
 }

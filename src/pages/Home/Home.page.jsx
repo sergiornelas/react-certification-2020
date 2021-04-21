@@ -1,14 +1,18 @@
 import React, { useRef } from 'react';
 import styled from 'styled-components';
-import Videocards from './VideoCards/VideoCards';
-import useYoutube from '../../utils/hooks/useYoutube';
+// import Videocards from './VideoCards/VideoCards';
+// import useYoutube from '../../utils/hooks/useYoutube';
 import { useAppState } from '../../providers/AppState/State.provider';
 
-export const HomeTitle = styled.h1`
+export const HomeTitleLight = styled.h1`
   text-align: center;
   font-size: 2.5rem;
   margin: 3rem;
   color: rgb(117, 36, 36);
+`;
+
+export const HomeTitleDark = styled(HomeTitleLight)`
+  color: white;
 `;
 
 const HomeBody = styled.section`
@@ -30,16 +34,33 @@ function HomePage() {
   // }
   // not my code xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
-  const { state } = useAppState();
-  const { search } = state;
+  // const { state } = useAppState();
+  // const { search, darkTheme } = state;
+  // const [...videosMetaInfo] = useYoutube(search);
 
-  const [...videosMetaInfo] = useYoutube(search);
+  const { state } = useAppState();
+  const { darkTheme } = state;
+
+  const HomeTitle = () => {
+    if (darkTheme) {
+      return (
+        <HomeTitleDark data-testid="columnheader">
+          Welcome to the Challenge!
+        </HomeTitleDark>
+      );
+    }
+    return (
+      <HomeTitleLight data-testid="columnheader">
+        Welcome to the Challenge!
+      </HomeTitleLight>
+    );
+  };
 
   return (
     <section ref={sectionRef}>
       <HomeTitle data-testid="columnheader">Welcome to the Challenge!</HomeTitle>
       <HomeBody>
-        <Videocards videosMetaInfo={videosMetaInfo} />
+        {/* <Videocards videosMetaInfo={videosMetaInfo} /> */}
         {/* not my code xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx */}
         {/* {authenticated ? (
           <>

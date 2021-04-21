@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-// import { useAppState } from '../../../providers/AppState/State.provider';
 
 export const Dark = styled.input`
   color: grey;

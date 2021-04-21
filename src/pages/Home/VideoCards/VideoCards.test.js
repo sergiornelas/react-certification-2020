@@ -1,5 +1,4 @@
 import React from 'react';
-// import { screen, render, fireEvent } from '@testing-library/react';
 import { screen, render } from '@testing-library/react';
 import 'jest-styled-components';
 import '@testing-library/jest-dom/extend-expect';
@@ -55,18 +54,4 @@ describe('video detail', () => {
     const altText = images.map((element) => element.alt);
     expect(altText).toEqual(['Title 1', 'Title 2']);
   });
-
-  // test('selectVideo function triggers once user clicks on video', () => {
-  //   const selectVideo = jest.fn();
-  //   render(
-  //     <BrowserRouter>
-  //       {/* <VideoCards videosMetaInfo={videoData} getVideoSelected={selectVideo} /> */}
-  //       <VideoCards videosMetaInfo={videoData} />
-  //     </BrowserRouter>
-  //   );
-  //   const images = screen.getAllByRole('img');
-  //   fireEvent.click(images[0]);
-
-  //   expect(selectVideo.mock.calls.length).toBe(1); // good
-  // });
 });

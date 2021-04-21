@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import styled from 'styled-components';
-// import Videocards from './VideoCards/VideoCards';
-// import useYoutube from '../../utils/hooks/useYoutube';
+import Videocards from './VideoCards/VideoCards';
+import useYoutube from '../../utils/hooks/useYoutube';
 import { useAppState } from '../../providers/AppState/State.provider';
 
 export const HomeTitleLight = styled.h1`
@@ -34,12 +34,9 @@ function HomePage() {
   // }
   // not my code xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
-  // const { state } = useAppState();
-  // const { search, darkTheme } = state;
-  // const [...videosMetaInfo] = useYoutube(search);
-
   const { state } = useAppState();
-  const { darkTheme } = state;
+  const { search, darkTheme } = state;
+  const [...videosMetaInfo] = useYoutube(search);
 
   const HomeTitle = () => {
     if (darkTheme) {
@@ -60,7 +57,7 @@ function HomePage() {
     <section ref={sectionRef}>
       <HomeTitle data-testid="columnheader">Welcome to the Challenge!</HomeTitle>
       <HomeBody>
-        {/* <Videocards videosMetaInfo={videosMetaInfo} /> */}
+        <Videocards videosMetaInfo={videosMetaInfo} />
         {/* not my code xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx */}
         {/* {authenticated ? (
           <>

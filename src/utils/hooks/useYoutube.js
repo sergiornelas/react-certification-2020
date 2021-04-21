@@ -1,9 +1,7 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
-const KEY = 'AIzaSyCQEOOburB6mldMChkU2Z9_VLTTrmD6pgc';
-// const KEY = 'AIzaSyC_kd_Wf8pJ1r6adCkQt3vfWGUsqMGs3Z8'; //  wizelineReact2
-// const KEY = 'AIzaSyDHWyxODQmGDD0Y8walA1RcEVgUYCnBqH0'; //  wizelineReact3, esta usando el hosting
+const KEY = 'AIzaSyDHWyxODQmGDD0Y8walA1RcEVgUYCnBqH0'; // hosting
 // const KEY = `${process.env.REACT_APP_NOT_SECRET_CODE}`;
 
 const youtubeApi = axios.create({
@@ -27,7 +25,6 @@ export default function useYoutube(search) {
       },
     });
     response.then((youtubeData) => {
-      console.log('API consumed');
       setVideosMetaInfo(youtubeData.data.items);
     });
     response.catch((e) => console.log('error youtube api: ', e));

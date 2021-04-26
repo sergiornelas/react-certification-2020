@@ -1,8 +1,10 @@
 import React, { useRef } from 'react';
 import styled from 'styled-components';
-import Videocards from './VideoCards/VideoCards';
-import useYoutube from '../../utils/hooks/useYoutube';
+// import { Link, useHistory } from 'react-router-dom';
+// import Videocards from './VideoCards/VideoCards';
+// import useYoutube from '../../utils/hooks/useYoutube';
 import { useAppState } from '../../providers/AppState/State.provider';
+// import { useAuth } from '../../providers/Auth/Auth.provider';
 
 export const HomeTitleLight = styled.h1`
   text-align: center;
@@ -22,21 +24,11 @@ const HomeBody = styled.section`
 `;
 
 function HomePage() {
-  // not my code xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-  // const history = useHistory();
   const sectionRef = useRef(null);
-  // const { authenticated, logout } = useAuth();
-
-  // function deAuthenticate(event) {
-  //   event.preventDefault();
-  //   logout();
-  //   history.push('/');
-  // }
-  // not my code xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-
   const { state } = useAppState();
-  const { search, darkTheme } = state;
-  const [...videosMetaInfo] = useYoutube(search);
+  // const { search, darkTheme } = state;
+  const { darkTheme } = state;
+  // const [...videosMetaInfo] = useYoutube(search);
 
   const HomeTitle = () => {
     if (darkTheme) {
@@ -56,25 +48,7 @@ function HomePage() {
   return (
     <section ref={sectionRef}>
       <HomeTitle data-testid="columnheader">Welcome to the Challenge!</HomeTitle>
-      <HomeBody>
-        <Videocards videosMetaInfo={videosMetaInfo} />
-        {/* not my code xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx */}
-        {/* {authenticated ? (
-          <>
-            <h2>Good to have you back</h2>
-            <span>
-              <Link to="/" onClick={deAuthenticate}>
-                ← logout
-              </Link>
-              <span className="separator" />
-              <Link to="/secret">show me something cool →</Link>
-            </span>
-          </>
-        ) : (
-          <Link to="/login">let me in →</Link>
-        )} */}
-        {/* not my code xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx */}
-      </HomeBody>
+      <HomeBody>{/* <Videocards videosMetaInfo={videosMetaInfo} /> */}</HomeBody>
     </section>
   );
 }

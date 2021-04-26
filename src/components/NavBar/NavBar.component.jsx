@@ -7,6 +7,8 @@ import ToggleDark from './NavBarElements/ToggleDark.component';
 import Login from './NavBarElements/Login.component';
 import { useAppState } from '../../providers/AppState/State.provider';
 
+import Favorites from './NavBarElements/Favorites.component';
+
 const NavLight = styled.nav`
   color: white;
   background-color: brown;
@@ -46,6 +48,7 @@ function Toolbar() {
         <Search />
       </LeftWrapper>
       <RightWrapper>
+        <Favorites />
         <ToggleDark darkTheme={darkTheme} dispatch={dispatch} />
         <Login />
       </RightWrapper>

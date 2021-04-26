@@ -12,6 +12,8 @@ import Layout from '../Layout';
 import { GlobalStyles } from '../../global';
 import NavBar from '../NavBar/NavBar.component';
 import VideoReproducer from '../VideoReproducerPage/VideoReproducer.page';
+import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
+import FavoriteVideos from '../../pages/FavoriteVideos/FavoriteVideos';
 
 function App() {
   return (
@@ -19,27 +21,28 @@ function App() {
       <AuthProvider>
         <StateProvider>
           <GlobalStyles />
-          <NavBar />
           <Layout>
+            <NavBar />
             <Switch>
               <Route exact path="/">
                 <HomePage />
               </Route>
-              <Route path={`/:${localStorage.getItem('videoId')}`}>
-                <VideoReproducer />
-              </Route>
+              <Private exact path="/favorites">
+                <FavoriteVideos />
+              </Private>
               <Route exact path="/login">
                 <LoginPage />
               </Route>
-              <Private exact path="/secret">
-                <SecretPage />
-              </Private>
+              <ProtectedRoute exact path="/testt" component={SecretPage} />
+              <Route exact path={`/:${localStorage.getItem('videoId')}`}>
+                <VideoReproducer />
+              </Route>
               <Route path="*">
                 <NotFound />
               </Route>
             </Switch>
-            <Fortune />
           </Layout>
+          <Fortune />
         </StateProvider>
       </AuthProvider>
     </BrowserRouter>

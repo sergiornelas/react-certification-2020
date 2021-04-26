@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import VideoPlayer from './VideoPlayer';
 import VideoList from './VideoList';
 import VideoListElements from './VideoListElements/VideoListElements';
+import InfoFavButton from './InfoFavButton';
 
 export const Container = styled.section`
   display: flex;
@@ -16,11 +17,13 @@ export const Container = styled.section`
 
 function VideoReproducer() {
   // const [currentLink, setCurrentLink] = useState(Object.keys(useParams())[0]);
-  const [videoUrl, setVideoUrl] = useState(localStorage.getItem('videoId'));
+  const data = JSON.parse(localStorage.getItem('currentVideoObj'));
+  const [videoUrl, setVideoUrl] = useState(data.id);
 
   return (
     <Container>
       <VideoPlayer title={videoUrl} src={`https://www.youtube.com/embed/${videoUrl}`} />
+      <InfoFavButton currentVideoObj={localStorage.getItem('currentVideoObj')} />
       <VideoList>
         <VideoListElements setVideoUrl={setVideoUrl} />
       </VideoList>

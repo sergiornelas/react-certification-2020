@@ -10,11 +10,29 @@ const VideoListElements = ({ setVideoUrl }) => {
   const { search } = state;
   const [...data] = useYoutube(search);
 
+  const updatePage = (identifier, text, image, content) => {
+    setVideoUrl(identifier);
+    const object = {
+      id: identifier,
+      title: text,
+      thumbnail: image,
+      description: content,
+    };
+    localStorage.setItem('currentVideoObj', JSON.stringify(object));
+  };
+
   return data.map((elem) => {
     return (
       <VideoListElement
         key={elem.id.videoId}
-        onClick={() => setVideoUrl(elem.id.videoId)}
+        onClick={() =>
+          updatePage(
+            elem.id.videoId,
+            elem.snippet.title,
+            elem.snippet.thumbnails.medium.url,
+            elem.snippet.description
+          )
+        }
       >
         <Link
           to={`/${elem.id.videoId}`}

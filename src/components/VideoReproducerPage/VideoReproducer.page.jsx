@@ -17,8 +17,10 @@ export const Container = styled.section`
 
 function VideoReproducer() {
   // const [currentLink, setCurrentLink] = useState(Object.keys(useParams())[0]);
-  const data = JSON.parse(localStorage.getItem('currentVideoObj'));
-  const [videoUrl, setVideoUrl] = useState(data.id);
+  const currentVideo = JSON.parse(localStorage.getItem('currentVideoObj'));
+
+  // Pendiente acá, creo que sobra el setVideoUrl
+  const [videoUrl, setVideoUrl] = useState(currentVideo.id);
 
   return (
     <Container>

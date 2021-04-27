@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-// import React from 'react';
 import styled from 'styled-components';
 
 const Container = styled.section`
@@ -25,19 +24,29 @@ export const FavButton = styled.button`
   }
 `;
 
-function InfoFavButton({ currentVideoObj }) {
-  const [favList, setFavList] = useState({});
+function InfoFavButton({ actualVideo }) {
+  const [fav, setFav] = useState();
 
   const saveToFav = () => {
-    localStorage.setItem('favVideos', JSON.stringify([JSON.parse(favList)]));
+    // if there is stored favVideos already
+    if (localStorage.getItem('favVideos')) {
+      localStorage.setItem(
+        'favVideos',
+        JSON.stringify([...JSON.parse(localStorage.getItem('favVideos')), fav])
+      );
+    } else {
+      localStorage.setItem('favVideos', JSON.stringify([fav]));
+    }
   };
 
   useEffect(() => {
-    setFavList(currentVideoObj);
-  }, [currentVideoObj]);
+    setFav(JSON.parse(actualVideo));
+  }, [actualVideo]);
 
   return (
     <Container>
+      <p>{JSON.parse(actualVideo).title}</p>
+      <p>{JSON.parse(actualVideo).description}</p>
       <FavButton onClick={saveToFav}>Add to Favorites</FavButton>
     </Container>
   );

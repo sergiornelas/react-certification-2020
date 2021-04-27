@@ -19,6 +19,7 @@ function Login() {
   function deAuthenticate(event) {
     event.preventDefault();
     logout();
+    localStorage.removeItem('mockedUser');
     history.push('/');
   }
 

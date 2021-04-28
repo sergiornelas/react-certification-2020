@@ -5,7 +5,7 @@ import { useAuth } from '../../providers/Auth';
 import './Login.styles.css';
 import loginApi from './login.api';
 
-const Hint = styled.span`
+const WrongCredentials = styled.span`
   color: red;
   margin-top: 20px;
   font-size: 15px;
@@ -63,7 +63,7 @@ function LoginPage() {
         </div>
         <button type="submit">login</button>
       </form>
-      <Hint>{badCredentials}</Hint>
+      <WrongCredentials>{badCredentials}</WrongCredentials>
     </section>
   );
 }

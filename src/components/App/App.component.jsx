@@ -14,6 +14,7 @@ import NavBar from '../NavBar/NavBar.component';
 import VideoReproducer from '../VideoReproducerPage/VideoReproducer.page';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import FavoriteVideos from '../../pages/FavoriteVideos/FavoriteVideos';
+import FavoriteReproducer from '../../pages/FavoriteVideos/FavoriteReproducer';
 
 function App() {
   return (
@@ -29,6 +30,9 @@ function App() {
               </Route>
               <Private exact path="/favorites">
                 <FavoriteVideos />
+              </Private>
+              <Private exact path={`/favorites/:${localStorage.getItem('videoId')}`}>
+                <FavoriteReproducer />
               </Private>
               <Route exact path="/login">
                 <LoginPage />

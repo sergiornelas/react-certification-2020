@@ -1,10 +1,8 @@
 import React, { useRef } from 'react';
 import styled from 'styled-components';
-// import { Link, useHistory } from 'react-router-dom';
+import { useAppState } from '../../providers/AppState/State.provider';
 // import Videocards from './VideoCards/VideoCards';
 // import useYoutube from '../../utils/hooks/useYoutube';
-import { useAppState } from '../../providers/AppState/State.provider';
-// import { useAuth } from '../../providers/Auth/Auth.provider';
 
 export const HomeTitleLight = styled.h1`
   text-align: center;
@@ -17,38 +15,36 @@ export const HomeTitleDark = styled(HomeTitleLight)`
   color: white;
 `;
 
-const HomeBody = styled.section`
+export const HomeBody = styled.section`
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
 `;
 
+export const HomeTitle = ({ title }) => {
+  const { state } = useAppState();
+  const { darkTheme } = state;
+
+  if (darkTheme) {
+    return <HomeTitleDark data-testid="columnheader">{title}</HomeTitleDark>;
+  }
+  return <HomeTitleLight data-testid="columnheader">{title}</HomeTitleLight>;
+};
+
 function HomePage() {
   const sectionRef = useRef(null);
-  const { state } = useAppState();
-  // const { search, darkTheme } = state;
-  const { darkTheme } = state;
+  // const { state } = useAppState();
+  // const { search } = state;
   // const [...videosMetaInfo] = useYoutube(search);
-
-  const HomeTitle = () => {
-    if (darkTheme) {
-      return (
-        <HomeTitleDark data-testid="columnheader">
-          Welcome to the Challenge!
-        </HomeTitleDark>
-      );
-    }
-    return (
-      <HomeTitleLight data-testid="columnheader">
-        Welcome to the Challenge!
-      </HomeTitleLight>
-    );
-  };
 
   return (
     <section ref={sectionRef}>
-      <HomeTitle data-testid="columnheader">Welcome to the Challenge!</HomeTitle>
-      <HomeBody>{/* <Videocards videosMetaInfo={videosMetaInfo} /> */}</HomeBody>
+      <HomeTitle title="Welcome to the Challenge!" />
+      <HomeBody>
+        hola
+        {/* <Videocards videosMetaInfo={videosMetaInfo} /> */}
+      </HomeBody>
+      <HomeBody />
     </section>
   );
 }

@@ -10,9 +10,14 @@ function useAppState() {
   return context;
 }
 
+let dark = JSON.parse(localStorage.getItem('darkTheme'));
+if (dark === null) {
+  dark = false;
+}
+
 const initialState = {
   search: 'wizeline',
-  darkTheme: false,
+  darkTheme: dark,
 };
 
 function reducer(state, action) {

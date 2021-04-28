@@ -21,6 +21,7 @@ export const VideoCardInfo = styled.div`
 `;
 
 function VideoCards({ videosMetaInfo }) {
+  console.log('videosMetaInfo', videosMetaInfo);
   return videosMetaInfo.map(({ snippet, id }) => {
     return (
       <VideoCard

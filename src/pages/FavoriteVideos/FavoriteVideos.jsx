@@ -1,23 +1,38 @@
 import React from 'react';
-import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import { HomeTitle, HomeBody } from '../Home/Home.page';
+import { VideoCard, VideoCardInfo } from '../Home/VideoCards/VideoCards';
 
-export const Container = styled.section`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: auto;
-  @media (min-width: 1000px) {
-    width: 60%;
-  }
-`;
+const FavoriteVideos = () => {
+  const videosMetaInfo = JSON.parse(localStorage.getItem('favVideos'));
 
-function VideoReproducer() {
+  return videosMetaInfo.map((element) => {
+    return (
+      <VideoCard key={element.id} onClick={() => console.log(element.id)}>
+        <Link
+          to={`/favorites/${element.id}`}
+          style={{ textDecoration: 'none', color: 'black' }}
+        >
+          <img alt={element.title} src={element.thumbnail} style={{ width: '100%' }} />
+          <VideoCardInfo>
+            <h1>{element.title}</h1>
+            {element.description}
+          </VideoCardInfo>
+        </Link>
+      </VideoCard>
+    );
+  });
+};
+
+const FavoriteVideoHome = () => {
   return (
-    <Container>
-      <br />
-      FAVORITE VIDEOS!
-    </Container>
+    <>
+      <HomeTitle title="Favorites" />
+      <HomeBody>
+        <FavoriteVideos />
+      </HomeBody>
+    </>
   );
-}
+};
 
-export default VideoReproducer;
+export default FavoriteVideoHome;

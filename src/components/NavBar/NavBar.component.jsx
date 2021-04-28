@@ -31,7 +31,7 @@ export const LeftWrapper = styled.nav`
 export const RightWrapper = styled(LeftWrapper)``;
 
 function Toolbar() {
-  const { state, dispatch } = useAppState();
+  const { state } = useAppState();
   const { darkTheme } = state;
 
   const NavBar = ({ children }) => {
@@ -49,7 +49,7 @@ function Toolbar() {
       </LeftWrapper>
       <RightWrapper>
         <Favorites />
-        <ToggleDark darkTheme={darkTheme} dispatch={dispatch} />
+        <ToggleDark />
         <Login />
       </RightWrapper>
     </NavBar>

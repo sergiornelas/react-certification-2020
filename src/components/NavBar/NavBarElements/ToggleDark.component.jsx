@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useAppState } from '../../../providers/AppState/State.provider';
 
 export const Dark = styled.input`
   color: grey;
@@ -20,9 +21,13 @@ const Text = styled.p`
   }
 `;
 
-function ToggleDark({ darkTheme, dispatch }) {
+function ToggleDark() {
+  const { state, dispatch } = useAppState();
+  const { darkTheme } = state;
+
   const switchTheme = () => {
     dispatch({ type: 'SET_THEME', payload: !darkTheme });
+    localStorage.setItem('darkTheme', !darkTheme);
   };
 
   return (

@@ -18,12 +18,13 @@ export const Container = styled.section`
 function VideoReproducer() {
   // const [currentLink, setCurrentLink] = useState(Object.keys(useParams())[0]);
   const currentVideo = JSON.parse(localStorage.getItem('currentVideoObj'));
+  const x = localStorage.getItem('videoId');
 
   const [videoUrl, setVideoUrl] = useState(currentVideo.id);
 
   return (
     <Container>
-      <VideoPlayer title={videoUrl} src={`https://www.youtube.com/embed/${videoUrl}`} />
+      <VideoPlayer title={videoUrl} src={`https://www.youtube.com/embed/${x}`} />
       <InfoFavButton actualVideo={localStorage.getItem('currentVideoObj')} />
       <VideoList>
         <VideoListElements setVideoUrl={setVideoUrl} />

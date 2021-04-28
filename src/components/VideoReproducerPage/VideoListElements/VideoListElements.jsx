@@ -19,6 +19,7 @@ const VideoListElements = ({ setVideoUrl }) => {
       description: content,
     };
     localStorage.setItem('currentVideoObj', JSON.stringify(object));
+    localStorage.setItem('videoId', identifier);
   };
 
   return data.map((elem) => {

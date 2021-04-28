@@ -1,8 +1,9 @@
 import React, { useRef } from 'react';
 import styled from 'styled-components';
+// import { Link } from 'react-router-dom';
 import { useAppState } from '../../providers/AppState/State.provider';
-// import Videocards from './VideoCards/VideoCards';
-// import useYoutube from '../../utils/hooks/useYoutube';
+import Videocards from './VideoCards/VideoCards';
+import useYoutube from '../../utils/hooks/useYoutube';
 
 export const HomeTitleLight = styled.h1`
   text-align: center;
@@ -33,16 +34,31 @@ export const HomeTitle = ({ title }) => {
 
 function HomePage() {
   const sectionRef = useRef(null);
-  // const { state } = useAppState();
-  // const { search } = state;
-  // const [...videosMetaInfo] = useYoutube(search);
+  const { state } = useAppState();
+  const { search } = state;
+  const [...videosApiInfo] = useYoutube(search);
+
+  const newMeta = [];
+  videosApiInfo.forEach((element) => {
+    newMeta.push({
+      id: element.id.videoId,
+      title: element.snippet.title,
+      description: element.snippet.description,
+      thumbnail: element.snippet.thumbnails.medium.url,
+    });
+  });
+
+  const link = '';
 
   return (
     <section ref={sectionRef}>
       <HomeTitle title="Welcome to the Challenge!" />
       <HomeBody>
-        hola
-        {/* <Videocards videosMetaInfo={videosMetaInfo} /> */}
+        {/* <Link style={{ color: 'black' }} to="/aaa">
+          go to secret page
+        </Link> */}
+
+        <Videocards videosMetaInfo={newMeta} link={link} />
       </HomeBody>
       <HomeBody />
     </section>

@@ -16,6 +16,9 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import FavoriteVideos from '../../pages/FavoriteVideos/FavoriteVideos';
 import FavoriteReproducer from '../../pages/FavoriteVideos/FavoriteReproducer';
 
+const id = JSON.parse(localStorage.getItem('currentVideoObject'));
+console.log('veamos', id.id);
+
 function App() {
   return (
     <BrowserRouter>
@@ -28,19 +31,21 @@ function App() {
               <Route exact path="/">
                 <HomePage />
               </Route>
-              <Private exact path="/favorites">
-                <FavoriteVideos />
-              </Private>
-              <Private exact path={`/favorites/:${localStorage.getItem('videoId')}`}>
-                <FavoriteReproducer />
-              </Private>
               <Route exact path="/login">
                 <LoginPage />
               </Route>
-              <ProtectedRoute exact path="/testt" component={SecretPage} />
-              <Route exact path={`/:${localStorage.getItem('videoId')}`}>
+              <Private exact path="/favorites">
+                <FavoriteVideos />
+              </Private>
+              <Private exact path={`/favorites/:${id.id}`}>
+                <FavoriteReproducer />
+              </Private>
+              <Route exact path={`/:${id.id}`}>
                 <VideoReproducer />
               </Route>
+              <ProtectedRoute exact path="/aaa">
+                <SecretPage />
+              </ProtectedRoute>
               <Route path="*">
                 <NotFound />
               </Route>

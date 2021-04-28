@@ -14,10 +14,11 @@ import NavBar from '../NavBar/NavBar.component';
 import VideoReproducer from '../VideoReproducerPage/VideoReproducer.page';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import FavoriteVideos from '../../pages/FavoriteVideos/FavoriteVideos';
-import FavoriteReproducer from '../../pages/FavoriteVideos/FavoriteReproducer';
 
-const id = JSON.parse(localStorage.getItem('currentVideoObject'));
-console.log('veamos', id.id);
+let id = JSON.parse(localStorage.getItem('currentVideoObject'));
+if (id === null) {
+  id = { id: 'randomvalue' };
+}
 
 function App() {
   return (
@@ -38,7 +39,7 @@ function App() {
                 <FavoriteVideos />
               </Private>
               <Private exact path={`/favorites/:${id.id}`}>
-                <FavoriteReproducer />
+                <VideoReproducer favorites />
               </Private>
               <Route exact path={`/:${id.id}`}>
                 <VideoReproducer />

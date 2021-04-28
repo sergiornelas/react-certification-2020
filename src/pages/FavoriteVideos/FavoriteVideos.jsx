@@ -8,7 +8,7 @@ const FavoriteVideos = () => {
 
   return (
     <>
-      <HomeTitle title="Favorites" />
+      <HomeTitle title="Favorites ✯" />
       <HomeBody>
         <VideoCards videosMetaInfo={videosMetaInfo} link={link} />
       </HomeBody>

@@ -8,6 +8,8 @@ const Input = styled.input`
   color: black;
   margin-left: 1rem;
   width: 9rem;
+  border-radius: 10px;
+  height: 30px;
   &:hover {
     background-color: lightgray;
   }
@@ -41,7 +43,7 @@ function Search() {
   return (
     <form onSubmit={onSubmit}>
       <Input
-        placeholder="Search video"
+        placeholder="  Search video"
         role="search"
         type="text"
         onChange={onSearchChanged}

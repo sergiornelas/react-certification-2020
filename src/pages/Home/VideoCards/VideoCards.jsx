@@ -45,7 +45,6 @@ function VideoCards({ videosMetaInfo, link }) {
         }
       >
         <Link
-          // to={`/favorites/${element.id}`}  // funciona <3
           to={`${link}/${element.id}`}
           style={{ textDecoration: 'none', color: 'black' }}
         >

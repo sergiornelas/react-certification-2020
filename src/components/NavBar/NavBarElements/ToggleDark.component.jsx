@@ -2,22 +2,19 @@ import React from 'react';
 import styled from 'styled-components';
 import { useAppState } from '../../../providers/AppState/State.provider';
 
-export const Dark = styled.input`
-  color: grey;
-  margin: auto;
-  width: 60px;
-  height: 34px;
-  cursor: pointer;
+const Text = styled.p`
   display: none;
+  cursor: pointer;
+  margin-right: 1.5rem;
+  background-color: white;
+  border-radius: 50px;
+  padding: 10px;
+  color: black;
   @media (min-width: 750px) {
     display: block;
   }
-`;
-
-const Text = styled.p`
-  display: none;
-  @media (min-width: 750px) {
-    display: block;
+  &:hover {
+    background-color: lightgray;
   }
 `;
 
@@ -32,8 +29,11 @@ function ToggleDark() {
 
   return (
     <>
-      <Text>Dark Mode</Text>
-      <Dark type="radio" onClick={switchTheme} />
+      {darkTheme ? (
+        <Text onClick={switchTheme}>Light Mode</Text>
+      ) : (
+        <Text onClick={switchTheme}>Dark Mode</Text>
+      )}
     </>
   );
 }

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import { useAuth } from '../../providers/Auth/Auth.provider';
 
 const Container = styled.section`
   background-color: white;
@@ -8,7 +9,7 @@ const Container = styled.section`
   justify-content: flex-end;
 `;
 
-export const FavButton = styled.button`
+export const AddFavButton = styled.button`
   height: 50px;
   padding: 10px;
   background-color: brown;
@@ -23,7 +24,7 @@ export const FavButton = styled.button`
   }
 `;
 
-export const DropFavButton = styled(FavButton)`
+export const DropFavButton = styled(AddFavButton)`
   background-color: grey;
 `;
 
@@ -73,15 +74,27 @@ function InfoFavButton({ actualVideo }) {
     setFav(JSON.parse(actualVideo));
   }, [actualVideo]);
 
-  return (
-    <Container>
-      <p>{JSON.parse(actualVideo).title}</p>
-      <p>{JSON.parse(actualVideo).description}</p>
-      {toggleFavButton ? (
+  const { authenticated } = useAuth();
+
+  const FavButton = () => {
+    let buttonAppears;
+    if (authenticated) {
+      buttonAppears = toggleFavButton ? (
         <DropFavButton onClick={removeFromFav}>Remove from favorites</DropFavButton>
       ) : (
-        <FavButton onClick={saveToFav}>Add to Favorites</FavButton>
-      )}
+        <AddFavButton onClick={saveToFav}>Add to Favorites</AddFavButton>
+      );
+    } else {
+      buttonAppears = <></>;
+    }
+    return buttonAppears;
+  };
+
+  return (
+    <Container>
+      <p style={{ fontSize: '0.5rem' }}>{JSON.parse(actualVideo).title}</p>
+      <p>{JSON.parse(actualVideo).description}</p>
+      <FavButton />
     </Container>
   );
 }

@@ -3,13 +3,40 @@ import styled from 'styled-components';
 import { Link, useHistory } from 'react-router-dom';
 import { useAuth } from '../../../providers/Auth/Auth.provider';
 
-export const LoginHandler = styled.p`
-  margin-right: 1rem;
+const LoginContainer = styled.span`
+  display: flex;
   cursor: pointer;
+  &:hover {
+    text-decoration: underline 3px;
+  }
+`;
+
+export const LoginHandler = styled.p`
+  margin-top: 1.5rem;
   display: none;
   @media (min-width: 750px) {
     display: block;
   }
+`;
+
+const ProfileLoggedOut = styled.div`
+  background: lightgrey;
+  width: 3.5px;
+  height: 3.5px;
+  border-radius: 50%;
+  margin: auto 0.5rem;
+  padding: 1.3rem;
+  display: none;
+  @media (min-width: 750px) {
+    display: block;
+  }
+`;
+
+// NECESITAMOS INTERNET PARA PONER LA IMAGEN DEL ICONO USUARIO
+// const x = localStorage.getItem()
+
+const ProfileLoggedIn = styled(ProfileLoggedOut)`
+  background: red;
 `;
 
 function Login() {
@@ -31,11 +58,17 @@ function Login() {
           onClick={deAuthenticate}
           style={{ textDecoration: 'none', color: 'white' }}
         >
-          <LoginHandler>Logout</LoginHandler>
+          <LoginContainer>
+            <LoginHandler>Logout</LoginHandler>
+            <ProfileLoggedIn />
+          </LoginContainer>
         </Link>
       ) : (
         <Link to="/login" style={{ textDecoration: 'none', color: 'white' }}>
-          <LoginHandler>Login</LoginHandler>
+          <LoginContainer>
+            <LoginHandler>Login</LoginHandler>
+            <ProfileLoggedOut />
+          </LoginContainer>
         </Link>
       )}
     </>

@@ -8,7 +8,7 @@ import { useAppState } from '../../providers/AppState/State.provider';
 import Favorites from './NavBarElements/Favorites.component';
 import Home from './NavBarElements/Home.component';
 
-const NavLight = styled.nav`
+export const NavLight = styled.nav`
   color: white;
   background-color: brown;
 
@@ -19,7 +19,7 @@ const NavLight = styled.nav`
   justify-content: space-between;
 `;
 
-const NavDark = styled(NavLight)`
+export const NavDark = styled(NavLight)`
   background-color: black;
 `;
 
@@ -29,7 +29,7 @@ export const LeftWrapper = styled.nav`
 
 export const RightWrapper = styled(LeftWrapper)``;
 
-function Toolbar() {
+export function Toolbar() {
   const { state } = useAppState();
   const { darkTheme } = state;
 

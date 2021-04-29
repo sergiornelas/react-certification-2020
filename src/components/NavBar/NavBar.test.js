@@ -3,7 +3,7 @@ import { render, screen } from '@testing-library/react';
 import 'jest-styled-components';
 import '@testing-library/jest-dom/extend-expect';
 
-import { LeftWrapper, RightWrapper } from './NavBar.component';
+import { LeftWrapper, RightWrapper, NavLight } from './NavBar.component';
 
 describe('Full navbar and its childs are in the page', () => {
   test('leftwrapper is available', () => {
@@ -18,5 +18,12 @@ describe('Full navbar and its childs are in the page', () => {
     const rightSide = screen.getByRole('navigation');
     expect(rightSide).toBeInTheDocument();
     expect(rightSide).toHaveStyle({ display: 'inline-flex' });
+  });
+
+  test('<NavLight>', () => {
+    render(<NavLight />);
+    const x = screen.getByRole('navigation');
+    expect(x).toBeInTheDocument();
+    expect(x).toHaveStyle({ color: 'white' });
   });
 });

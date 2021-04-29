@@ -10,7 +10,11 @@ const FavoriteVideos = () => {
     <>
       <HomeTitle title="Favorites ✯" />
       <HomeBody>
-        <VideoCards videosMetaInfo={videosMetaInfo} link={link} />
+        {videosMetaInfo ? (
+          <VideoCards videosMetaInfo={videosMetaInfo} link={link} />
+        ) : (
+          <h2>You don&apos;t have favorites!</h2>
+        )}
       </HomeBody>
     </>
   );

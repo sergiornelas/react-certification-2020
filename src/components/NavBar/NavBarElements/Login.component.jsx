@@ -33,7 +33,7 @@ const ProfileLoggedOut = styled.div`
 `;
 
 const ProfileLoggedIn = styled(ProfileLoggedOut)`
-  background-image: url(${JSON.parse(localStorage.getItem('mockedUser')).avatarUrl});
+  background-image: url('https://media.glassdoor.com/sqll/868055/wizeline-squarelogo-1473976610815.png');
   background-size: cover;
 `;
 

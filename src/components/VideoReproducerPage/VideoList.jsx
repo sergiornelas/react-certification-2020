@@ -5,12 +5,12 @@ const VideoList = styled.div`
   cursor: pointer;
   overflow: scroll;
   overflow-x: hidden;
-  height: 60vh;
+  height: 46vh;
   @media (min-width: 815px) {
-    height: 50vh;
+    height: 35vh;
   }
   @media (min-width: 1340px) {
-    height: 45vh;
+    height: 37vh;
   }
 `;
 

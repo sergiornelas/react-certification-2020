@@ -24,7 +24,7 @@ const ProfileLoggedOut = styled.div`
   width: 3.5px;
   height: 3.5px;
   border-radius: 50%;
-  margin: auto 0.5rem;
+  margin: 0.8rem 0.5rem;
   padding: 1.3rem;
   display: none;
   @media (min-width: 750px) {
@@ -32,11 +32,9 @@ const ProfileLoggedOut = styled.div`
   }
 `;
 
-// NECESITAMOS INTERNET PARA PONER LA IMAGEN DEL ICONO USUARIO
-// const x = localStorage.getItem()
-
 const ProfileLoggedIn = styled(ProfileLoggedOut)`
-  background: red;
+  background-image: url(${JSON.parse(localStorage.getItem('mockedUser')).avatarUrl});
+  background-size: cover;
 `;
 
 function Login() {

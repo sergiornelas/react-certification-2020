@@ -4,7 +4,7 @@ const Thumbnail = styled.img`
   margin-right: 20px;
   width: 150px;
   @media (min-width: 450px) {
-    width: 250px;
+    width: 180px;
   }
 `;
 

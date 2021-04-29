@@ -5,12 +5,9 @@ import Thumbnail from './Thumbnail';
 import useYoutubeData from '../../../utils/hooks/useYoutubeData';
 
 const VideoListElements = ({ setVideoUrl, favorites }) => {
-  const x = useYoutubeData();
-  let data = '';
+  let data = useYoutubeData();
   if (favorites) {
     data = JSON.parse(localStorage.getItem('favVideos'));
-  } else {
-    data = x;
   }
 
   const updatePage = (identifier, text, image, content) => {

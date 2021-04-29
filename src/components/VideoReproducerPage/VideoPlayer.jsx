@@ -10,7 +10,7 @@ const VideoPlayer = styled.iframe`
     height: 400px;
   }
   @media (min-width: 1340px) {
-    height: 454px;
+    height: 400px;
   }
 `;
 

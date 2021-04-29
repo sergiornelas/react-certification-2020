@@ -12,7 +12,6 @@ import Layout from '../Layout';
 import { GlobalStyles } from '../../global';
 import NavBar from '../NavBar/NavBar.component';
 import VideoReproducer from '../VideoReproducerPage/VideoReproducer.page';
-import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import FavoriteVideos from '../../pages/FavoriteVideos/FavoriteVideos';
 
 let id = JSON.parse(localStorage.getItem('currentVideoObject'));
@@ -44,9 +43,9 @@ function App() {
               <Route exact path={`/:${id.id}`}>
                 <VideoReproducer />
               </Route>
-              <ProtectedRoute exact path="/aaa">
+              <Private exact path="/secret">
                 <SecretPage />
-              </ProtectedRoute>
+              </Private>
               <Route path="*">
                 <NotFound />
               </Route>

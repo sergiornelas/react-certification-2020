@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { useAuth } from '../../providers/Auth/Auth.provider';
+import { Info } from './Info';
 
 const Container = styled.section`
   background-color: white;
@@ -10,11 +11,11 @@ const Container = styled.section`
 `;
 
 export const AddFavButton = styled.button`
-  height: 50px;
-  padding: 10px;
+  height: 60px;
   background-color: brown;
+  /* padding: 2px; */
   color: white;
-  font-size: 1rem;
+  font-size: 0.9rem;
   border-radius: 5px;
   font-weight: bold;
   margin: 0.5rem;
@@ -92,8 +93,12 @@ function InfoFavButton({ actualVideo }) {
 
   return (
     <Container>
-      <p style={{ fontSize: '0.5rem' }}>{JSON.parse(actualVideo).title}</p>
-      <p>{JSON.parse(actualVideo).description}</p>
+      {/* <p style={{ fontSize: '0.5rem' }}>{JSON.parse(actualVideo).title}</p>
+      <p>{JSON.parse(actualVideo).description}</p> */}
+      <Info
+        title={JSON.parse(actualVideo).title}
+        description={JSON.parse(actualVideo).description}
+      />
       <FavButton />
     </Container>
   );

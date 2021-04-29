@@ -6,7 +6,7 @@ import { useAppState } from '../../../providers/AppState/State.provider';
 const Input = styled.input`
   font-size: 1.2rem;
   color: black;
-  margin-left: 1rem;
+  margin: 0.2rem 0 0 1.5rem;
   width: 9rem;
   border-radius: 10px;
   height: 30px;

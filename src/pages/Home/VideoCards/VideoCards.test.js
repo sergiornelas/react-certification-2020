@@ -7,30 +7,16 @@ import VideoCards from './VideoCards';
 
 const videoData = [
   {
-    etag: '1',
-    id: { videoId: 'testVideoId1' },
-    snippet: {
-      title: 'Title 1',
-      description: 'Description',
-      thumbnails: {
-        medium: {
-          url: 'http://randomurl.com',
-        },
-      },
-    },
+    id: 'testVideoId',
+    title: 'Title 1',
+    description: 'Description',
+    thumbnail: 'http://randomurl.com',
   },
   {
-    etag: '2',
-    id: { videoId: 'testVideoId2' },
-    snippet: {
-      title: 'Title 2',
-      description: 'Description 2',
-      thumbnails: {
-        medium: {
-          url: 'http://randomurl2.com',
-        },
-      },
-    },
+    id: 'testVideoId2',
+    title: 'Title 2',
+    description: 'Description2',
+    thumbnail: 'http://randomurl2.com',
   },
 ];
 

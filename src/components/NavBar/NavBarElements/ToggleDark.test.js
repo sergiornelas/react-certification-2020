@@ -1,11 +1,21 @@
-// import React from 'react';
-// import { render, screen } from '@testing-library/react';
-// import 'jest-styled-components';
-// import '@testing-library/jest-dom/extend-expect';
-// import ToggleDark from './ToggleDark.component';
+import React from 'react';
+import { render, fireEvent } from '@testing-library/react';
+import 'jest-styled-components';
+import '@testing-library/jest-dom/extend-expect';
+import { ToggleDark } from './ToggleDark.component';
 
-// test('renders the correct text', () => {
-//   render(<ToggleDark />);
+jest.mock('../../../providers/AppState/State.provider', () => ({
+  useAppState: jest.fn(() => {
+    return {
+      state: true,
+      dispatch: jest.fn(),
+    };
+  }),
+}));
 
-//   expect(screen.getByText('Dark Mode')).toBeInTheDocument();
-// });
+test('renders the page title', () => {
+  render(<ToggleDark />);
+  const button = document.querySelector('p');
+  fireEvent.click(button);
+  expect(button).toHaveTextContent('Dark Mode');
+});

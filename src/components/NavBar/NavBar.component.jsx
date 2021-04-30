@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import Search from './NavBarElements/Search.component';
-import ToggleDark from './NavBarElements/ToggleDark.component';
+import { ToggleDark } from './NavBarElements/ToggleDark.component';
 import Login from './NavBarElements/Login.component';
 import { useAppState } from '../../providers/AppState/State.provider';
 import Favorites from './NavBarElements/Favorites.component';

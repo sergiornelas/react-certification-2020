@@ -31,7 +31,7 @@ export const HomeTitle = ({ title }) => {
   return <HomeTitleLight data-testid="columnheader">{title}</HomeTitleLight>;
 };
 
-function HomePage() {
+export function HomePage() {
   const sectionRef = useRef(null);
   // const videosMetaInfo = JSON.parse(localStorage.getItem('favVideos'));
   const videosMetaInfo = useYoutubeData();

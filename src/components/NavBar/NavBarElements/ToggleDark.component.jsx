@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { useAppState } from '../../../providers/AppState/State.provider';
 
-const Text = styled.p`
+export const Text = styled.p`
   display: none;
   cursor: pointer;
   margin-right: 1.5rem;
@@ -18,7 +18,7 @@ const Text = styled.p`
   }
 `;
 
-function ToggleDark() {
+export function ToggleDark() {
   const { state, dispatch } = useAppState();
   const { darkTheme } = state;
 

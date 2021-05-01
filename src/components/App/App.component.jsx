@@ -13,6 +13,7 @@ import { GlobalStyles } from '../../global';
 import NavBar from '../NavBar/NavBar.component';
 import VideoReproducer from '../VideoReproducerPage/VideoReproducer.page';
 import FavoriteVideos from '../../pages/FavoriteVideos/FavoriteVideos';
+// import { SideMenu } from '../NavBar/NavBarElements/SideMenu/SideMenu';
 
 let id = JSON.parse(localStorage.getItem('currentVideoObject'));
 if (id === null) {
@@ -26,6 +27,7 @@ function App() {
         <StateProvider>
           <GlobalStyles />
           <Layout>
+            {/* <SideMenu /> */}
             <NavBar />
             <Switch>
               <Route exact path="/">

@@ -14,7 +14,7 @@ const Input = styled.input`
     background-color: lightgray;
   }
   @media (min-width: 350px) {
-    width: 12rem;
+    width: 15rem;
   }
   @media (min-width: 495px) {
     width: 20rem;

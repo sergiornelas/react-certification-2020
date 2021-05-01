@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import styled from 'styled-components';
 import { useAppState } from '../../providers/AppState/State.provider';
+import { useAuth } from '../../providers/Auth/Auth.provider';
 import Videocards from './VideoCards/VideoCards';
 import useYoutubeData from '../../utils/hooks/useYoutubeData';
 
@@ -32,6 +33,7 @@ export const HomeTitle = ({ title }) => {
 };
 
 export function HomePage() {
+  const { authenticated } = useAuth();
   const sectionRef = useRef(null);
   // const videosMetaInfo = JSON.parse(localStorage.getItem('favVideos'));
   const videosMetaInfo = useYoutubeData();
@@ -39,7 +41,11 @@ export function HomePage() {
 
   return (
     <section ref={sectionRef}>
-      <HomeTitle title="Welcome to the Challenge!" />
+      {authenticated ? (
+        <HomeTitle title="Welcome Dear User!" />
+      ) : (
+        <HomeTitle title="Welcome to the Challenge!" />
+      )}
       <HomeBody>
         <Videocards videosMetaInfo={videosMetaInfo} link={link} />
       </HomeBody>

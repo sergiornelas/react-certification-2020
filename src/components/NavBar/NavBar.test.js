@@ -2,8 +2,7 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import 'jest-styled-components';
 import '@testing-library/jest-dom/extend-expect';
-import { BrowserRouter } from 'react-router-dom';
-import { LeftWrapper, RightWrapper, NavLight, Toolbar } from './NavBar.component';
+import { LeftWrapper, RightWrapper, NavLight } from './NavBar.component';
 
 jest.mock('../../providers/AppState/State.provider', () => ({
   useAppState: jest.fn(() => {
@@ -34,15 +33,5 @@ describe('Full navbar and its childs are in the page', () => {
     const x = screen.getByRole('navigation');
     expect(x).toBeInTheDocument();
     expect(x).toHaveStyle({ color: 'white' });
-  });
-
-  test('Home Element', () => {
-    render(
-      <BrowserRouter>
-        <Toolbar />
-      </BrowserRouter>
-    );
-    const x = screen.getByText('Home');
-    expect(x).toBeInTheDocument();
   });
 });

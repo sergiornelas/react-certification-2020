@@ -1,16 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-
-import SideDrawer from './NavBarElements/SideDrawer.component';
 import Search from './NavBarElements/Search.component';
-import ToggleDark from './NavBarElements/ToggleDark.component';
+import { ToggleDark } from './NavBarElements/ToggleDark.component';
 import Login from './NavBarElements/Login.component';
 import { useAppState } from '../../providers/AppState/State.provider';
+import Favorites from './NavBarElements/Favorites.component';
+import SideDrawer from './NavBarElements/SideMenu/SideDrawer.component';
+import SideMenu from './NavBarElements/SideMenu/SideMenu';
 
-const NavLight = styled.nav`
+export const NavLight = styled.nav`
   color: white;
   background-color: brown;
-
+  width: auto;
   height: 4rem;
   box-shadow: 1px 1px 3px 0.5px darkgray;
   display: flex;
@@ -18,7 +19,7 @@ const NavLight = styled.nav`
   justify-content: space-between;
 `;
 
-const NavDark = styled(NavLight)`
+export const NavDark = styled(NavLight)`
   background-color: black;
 `;
 
@@ -28,9 +29,10 @@ export const LeftWrapper = styled.nav`
 
 export const RightWrapper = styled(LeftWrapper)``;
 
-function Toolbar() {
-  const { state, dispatch } = useAppState();
+export function Toolbar() {
+  const { state } = useAppState();
   const { darkTheme } = state;
+  const [sideElement, setSideElement] = useState(false);
 
   const NavBar = ({ children }) => {
     if (darkTheme) {
@@ -39,14 +41,20 @@ function Toolbar() {
     return <NavLight role="rowheader">{children}</NavLight>;
   };
 
+  const toggleSideBar = () => {
+    setSideElement(!sideElement);
+  };
+
   return (
     <NavBar>
+      <SideMenu sideElement={sideElement} toggleSideBar={toggleSideBar} />
       <LeftWrapper>
-        <SideDrawer />
+        <SideDrawer toggleSideBar={toggleSideBar} />
         <Search />
       </LeftWrapper>
       <RightWrapper>
-        <ToggleDark darkTheme={darkTheme} dispatch={dispatch} />
+        <Favorites />
+        <ToggleDark />
         <Login />
       </RightWrapper>
     </NavBar>

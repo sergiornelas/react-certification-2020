@@ -1,8 +1,7 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
-const KEY = 'AIzaSyDHWyxODQmGDD0Y8walA1RcEVgUYCnBqH0'; // hosting
-// const KEY = `${process.env.REACT_APP_NOT_SECRET_CODE}`;
+const KEY = 'AIzaSyDHWyxODQmGDD0Y8walA1RcEVgUYCnBqH0'; //  wizelineReact3, esta usando el hosting
 
 const youtubeApi = axios.create({
   baseURL: 'https://www.googleapis.com/youtube/v3',

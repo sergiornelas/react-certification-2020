@@ -5,7 +5,7 @@ const DivContainer = styled.div`
   display: flex;
   flex-direction: column;
   cursor: pointer;
-  margin: 0 2rem;
+  margin: 0 1rem;
 `;
 
 const Div = styled.div`
@@ -19,9 +19,9 @@ const Div = styled.div`
   }
 `;
 
-function SideDrawer() {
+function SideDrawer({ toggleSideBar }) {
   return (
-    <DivContainer role="menuitem">
+    <DivContainer role="menuitem" onClick={toggleSideBar}>
       <Div />
       <Div />
       <Div />

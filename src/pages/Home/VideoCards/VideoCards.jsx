@@ -20,22 +20,38 @@ export const VideoCardInfo = styled.div`
   width: 310px;
 `;
 
-function VideoCards({ videosMetaInfo }) {
-  return videosMetaInfo.map(({ snippet, id }) => {
+function VideoCards({ videosMetaInfo, link }) {
+  const createCurrentObject = (identifier, text, image, content) => {
+    const object = {
+      id: identifier,
+      title: text,
+      thumbnail: image,
+      description: content,
+    };
+    localStorage.setItem('currentVideoObject', JSON.stringify(object));
+  };
+
+  return videosMetaInfo.map((element) => {
     return (
       <VideoCard
-        key={id.videoId}
-        onClick={() => localStorage.setItem('videoId', id.videoId)}
+        key={element.id}
+        onClick={() =>
+          createCurrentObject(
+            element.id,
+            element.title,
+            element.thumbnail,
+            element.description
+          )
+        }
       >
-        <Link to={`/${id.videoId}`} style={{ textDecoration: 'none', color: 'black' }}>
-          <img
-            alt={snippet.title}
-            src={snippet.thumbnails.medium.url}
-            style={{ width: '100%' }}
-          />
+        <Link
+          to={`${link}/${element.id}`}
+          style={{ textDecoration: 'none', color: 'black' }}
+        >
+          <img alt={element.title} src={element.thumbnail} style={{ width: '100%' }} />
           <VideoCardInfo>
-            <h1>{snippet.title}</h1>
-            {snippet.description}
+            <h1>{element.title}</h1>
+            {element.description}
           </VideoCardInfo>
         </Link>
       </VideoCard>

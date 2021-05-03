@@ -6,13 +6,15 @@ import { useAppState } from '../../../providers/AppState/State.provider';
 const Input = styled.input`
   font-size: 1.2rem;
   color: black;
-  margin-left: 1rem;
+  margin: 0.2rem 0 0 1.5rem;
   width: 9rem;
+  border-radius: 10px;
+  height: 30px;
   &:hover {
     background-color: lightgray;
   }
   @media (min-width: 350px) {
-    width: 12rem;
+    width: 15rem;
   }
   @media (min-width: 495px) {
     width: 20rem;
@@ -41,7 +43,7 @@ function Search() {
   return (
     <form onSubmit={onSubmit}>
       <Input
-        placeholder="Search video"
+        placeholder="  Search video"
         role="search"
         type="text"
         onChange={onSearchChanged}

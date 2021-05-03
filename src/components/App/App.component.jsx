@@ -12,6 +12,13 @@ import Layout from '../Layout';
 import { GlobalStyles } from '../../global';
 import NavBar from '../NavBar/NavBar.component';
 import VideoReproducer from '../VideoReproducerPage/VideoReproducer.page';
+import FavoriteVideos from '../../pages/FavoriteVideos/FavoriteVideos';
+// import { SideMenu } from '../NavBar/NavBarElements/SideMenu/SideMenu';
+
+let id = JSON.parse(localStorage.getItem('currentVideoObject'));
+if (id === null) {
+  id = { id: 'randomvalue' };
+}
 
 function App() {
   return (
@@ -19,17 +26,24 @@ function App() {
       <AuthProvider>
         <StateProvider>
           <GlobalStyles />
-          <NavBar />
           <Layout>
+            {/* <SideMenu /> */}
+            <NavBar />
             <Switch>
               <Route exact path="/">
                 <HomePage />
               </Route>
-              <Route path={`/:${localStorage.getItem('videoId')}`}>
-                <VideoReproducer />
-              </Route>
               <Route exact path="/login">
                 <LoginPage />
+              </Route>
+              <Private exact path="/favorites">
+                <FavoriteVideos />
+              </Private>
+              <Private exact path={`/favorites/:${id.id}`}>
+                <VideoReproducer favorites />
+              </Private>
+              <Route exact path={`/:${id.id}`}>
+                <VideoReproducer />
               </Route>
               <Private exact path="/secret">
                 <SecretPage />
@@ -38,8 +52,8 @@ function App() {
                 <NotFound />
               </Route>
             </Switch>
-            <Fortune />
           </Layout>
+          <Fortune />
         </StateProvider>
       </AuthProvider>
     </BrowserRouter>
